@@ -307,104 +307,9 @@ document.documentElement.classList.add('js');
           </div>
         </details>
 
-<details class="record" id="r-002" data-tags="ml python scikit-learn streamlit data churn">
-          <summary>
-            <span class="record__no">R-002</span>
-            <span class="record__title">Customer Churn Prediction</span>
-            <span class="record__role">ML · Streamlit</span>
-            <span class="record__metric"><b>0.868 AUC</b>200 test rows</span>
-            <span class="record__year">2026</span>
-            <span class="record__chev" aria-hidden="true"></span>
-          </summary>
-          <div class="record__body">
-            <div class="record__text">
-              <p>A churn classifier with a small Streamlit front end: ten customer fields in, churn probability out. I compared a linear baseline with a random forest and selected on ROC-AUC, because the classes are not balanced.</p>
-              <dl class="spec">
-                <dt>Data</dt><dd>1,000 Telco-format customer records</dd>
-                <dt>Models</dt><dd>Logistic regression vs. random forest (200 trees, max depth 10)</dd>
-                <dt>Test</dt><dd>200 held-out rows, 20% split</dd>
-                <dt>Result</dt><dd>Random forest 0.868 ROC-AUC, 0.79 accuracy; logistic 0.859</dd>
-              </dl>
-              <ul class="bullets">
-                <li>Wrapped preprocessing and model in one scikit-learn Pipeline, so training and serving cannot drift apart.</li>
-                <li>Chose AUC over accuracy because a model that always predicts “stays” can still look plausible.</li>
-                <li>Kept the caveat visible: 200 test rows means the interval around that AUC is wide.</li>
-              </ul>
-              <p class="links">
-                <a href="https://github.com/priyanshverma2004/Custo_churn_pred_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-                <a href="/work/churn/">Full record →</a>
-              </p>
-            </div>
-            <figure class="plate" data-caption="FIG. 03 — WHO LEAVES">
-              <svg viewBox="0 0 400 280" aria-hidden="true">
-                <text x="28" y="30" font-size="6.5" stroke="none">TENURE → CHURN RISK</text>
-                <path d="M40 204h310M40 204V70" stroke="currentColor"/>
-                <path d="M40 96c62 6 78 28 104 54s48 30 76 34 72 8 118 16" stroke="currentColor" fill="none" stroke-dasharray="4 4"/>
-                <path d="M40 110c58 10 92 34 118 54s66 22 118 24 70 2 74 2" stroke="currentColor" fill="none"/>
-                <g>
-                  <circle cx="94" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M80 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
-                  <circle cx="152" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M138 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
-                  <circle cx="210" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M196 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
-                  <circle cx="278" cy="132" r="10" stroke="currentColor" fill="none" stroke-dasharray="3 3"/><path d="M264 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
-                  <path d="M292 118l18-16" stroke="currentColor"/>
-                  <text x="306" y="100" font-size="6" stroke="none">CHURN</text>
-                </g>
-                <rect x="40" y="224" width="120" height="26" fill="currentColor" opacity=".08"/>
-                <text x="50" y="240" font-size="7" stroke="none">AUC 0.868</text>
-                <text x="174" y="240" font-size="6" stroke="none">RANDOM FOREST · N=200</text>
-              </svg>
-            </figure>
-          </div>
-        </details>
-
-<details class="record" id="r-003" data-tags="nlp ml python streamlit sentiment">
-          <summary>
-            <span class="record__no">R-003</span>
-            <span class="record__title">Sentiment Analysis</span>
-            <span class="record__role">NLP · a cautionary tale</span>
-            <span class="record__metric"><b>100%</b>and that is the problem</span>
-            <span class="record__year">2026</span>
-            <span class="record__chev" aria-hidden="true"></span>
-          </summary>
-          <div class="record__body">
-            <div class="record__text">
-              <p>A sentiment classifier trained on 1,000 synthetic reviews. Logistic regression and Naive Bayes both scored 100% on the held-out set. That result is the most useful thing in the repository: it says the dataset was too easy, not that the model is finished.</p>
-              <dl class="spec">
-                <dt>Data</dt><dd>1,000 synthetic positive / negative reviews</dd>
-                <dt>Models</dt><dd>Logistic regression and Multinomial Naive Bayes</dd>
-                <dt>Result</dt><dd>1.00 accuracy for both on 200 test rows</dd>
-                <dt>Read</dt><dd>A suspicious score — likely template overlap between splits</dd>
-              </dl>
-              <ul class="bullets">
-                <li>Published the result as-is instead of quietly replacing it with a friendlier number.</li>
-                <li>Wrote down the next check: a harder, real review set with neutral examples and negation.</li>
-                <li>Kept the Streamlit demo small so the model can be swapped in one file.</li>
-              </ul>
-              <p class="links">
-                <a href="https://github.com/priyanshverma2004/Sentiment_Analysis_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-              </p>
-            </div>
-            <figure class="plate" data-caption="FIG. 04 — TOO GOOD TO BE TRUE">
-              <svg viewBox="0 0 400 280" aria-hidden="true">
-                <path d="M34 62h170a10 10 0 0 1 10 10v62a10 10 0 0 1-10 10H84l-24 20v-20H34a10 10 0 0 1-10-10V72a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
-                <text x="52" y="96" font-size="26" font-family="Georgia,serif" stroke="none">+</text>
-                <path d="M80 102h90M80 116h64" stroke="currentColor"/>
-                <path d="M236 112h112a10 10 0 0 1 10 10v52a10 10 0 0 1-10 10h-26v18l-22-18h-64a10 10 0 0 1-10-10v-52a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
-                <text x="252" y="146" font-size="26" font-family="Georgia,serif" stroke="none">−</text>
-                <path d="M280 152h50M280 166h34" stroke="currentColor"/>
-                <path d="M34 214h332" stroke="currentColor"/>
-                <text x="34" y="240" font-size="9" font-family="Georgia,serif" stroke="none">1.00 accuracy</text>
-                <text x="34" y="258" font-size="6" stroke="none">SYNTHETIC DATA · 200 TEST ROWS · BOTH MODELS</text>
-                <text x="300" y="240" font-size="6" stroke="none">SUSPICIOUS</text>
-                <path d="M300 246l72 0" stroke="currentColor" stroke-dasharray="2 3"/>
-              </svg>
-            </figure>
-          </div>
-        </details>
-
-<details class="record" id="r-004" data-tags="ml cv vision yolo pytorch object detection">
+<details class="record" id="r-002" data-tags="ml cv vision yolo pytorch object detection">
         <summary>
-          <span class="record__no">R-004</span>
+          <span class="record__no">R-002</span>
           <span class="record__title">Airport X-ray screening</span>
           <span class="record__role">CV · YOLO26n</span>
           <span class="record__metric"><b>0.887</b>mAP@50, 12 classes</span>
@@ -465,9 +370,9 @@ document.documentElement.classList.add('js');
         </div>
       </details>
 
-<details class="record" id="r-005" data-tags="genai python fastapi react llm rag gemini groq">
+<details class="record" id="r-003" data-tags="genai python fastapi react llm rag gemini groq">
         <summary>
-          <span class="record__no">R-005</span>
+          <span class="record__no">R-003</span>
           <span class="record__title">FridgeAI</span>
           <span class="record__role">Full-stack · FastAPI + React</span>
           <span class="record__metric"><b>20</b>endpoints, RAG</span>
@@ -517,9 +422,9 @@ document.documentElement.classList.add('js');
         </div>
       </details>
 
-<details class="record" id="r-006" data-tags="nlp ml python scikit-learn text classification">
+<details class="record" id="r-004" data-tags="nlp ml python scikit-learn text classification">
           <summary>
-            <span class="record__no">R-006</span>
+            <span class="record__no">R-004</span>
             <span class="record__title">Email Spam Classifier</span>
             <span class="record__role">NLP · scikit-learn</span>
             <span class="record__metric"><b>97.1%</b>1,035 held-out emails</span>
@@ -563,6 +468,101 @@ document.documentElement.classList.add('js');
                 <text x="40" y="32" font-size="7" stroke="none">5,171 EMAILS · 1,035 HELD OUT</text>
                 <path d="M40 222h168" stroke="currentColor"/>
                 <text x="40" y="240" font-size="5.6" stroke="none">COUNTVECTORIZER → MULTINOMIAL NB</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+
+<details class="record" id="r-005" data-tags="ml python scikit-learn streamlit data churn">
+          <summary>
+            <span class="record__no">R-005</span>
+            <span class="record__title">Customer Churn Prediction</span>
+            <span class="record__role">ML · Streamlit</span>
+            <span class="record__metric"><b>0.868 AUC</b>200 test rows</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A churn classifier with a small Streamlit front end: ten customer fields in, churn probability out. I compared a linear baseline with a random forest and selected on ROC-AUC, because the classes are not balanced.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>1,000 Telco-format customer records</dd>
+                <dt>Models</dt><dd>Logistic regression vs. random forest (200 trees, max depth 10)</dd>
+                <dt>Test</dt><dd>200 held-out rows, 20% split</dd>
+                <dt>Result</dt><dd>Random forest 0.868 ROC-AUC, 0.79 accuracy; logistic 0.859</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Wrapped preprocessing and model in one scikit-learn Pipeline, so training and serving cannot drift apart.</li>
+                <li>Chose AUC over accuracy because a model that always predicts “stays” can still look plausible.</li>
+                <li>Kept the caveat visible: 200 test rows means the interval around that AUC is wide.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/Custo_churn_pred_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="/work/churn/">Full record →</a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 03 — WHO LEAVES">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <text x="28" y="30" font-size="6.5" stroke="none">TENURE → CHURN RISK</text>
+                <path d="M40 204h310M40 204V70" stroke="currentColor"/>
+                <path d="M40 96c62 6 78 28 104 54s48 30 76 34 72 8 118 16" stroke="currentColor" fill="none" stroke-dasharray="4 4"/>
+                <path d="M40 110c58 10 92 34 118 54s66 22 118 24 70 2 74 2" stroke="currentColor" fill="none"/>
+                <g>
+                  <circle cx="94" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M80 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="152" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M138 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="210" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M196 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="278" cy="132" r="10" stroke="currentColor" fill="none" stroke-dasharray="3 3"/><path d="M264 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
+                  <path d="M292 118l18-16" stroke="currentColor"/>
+                  <text x="306" y="100" font-size="6" stroke="none">CHURN</text>
+                </g>
+                <rect x="40" y="224" width="120" height="26" fill="currentColor" opacity=".08"/>
+                <text x="50" y="240" font-size="7" stroke="none">AUC 0.868</text>
+                <text x="174" y="240" font-size="6" stroke="none">RANDOM FOREST · N=200</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+
+<details class="record" id="r-006" data-tags="nlp ml python streamlit sentiment">
+          <summary>
+            <span class="record__no">R-006</span>
+            <span class="record__title">Sentiment Analysis</span>
+            <span class="record__role">NLP · a cautionary tale</span>
+            <span class="record__metric"><b>100%</b>and that is the problem</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A sentiment classifier trained on 1,000 synthetic reviews. Logistic regression and Naive Bayes both scored 100% on the held-out set. That result is the most useful thing in the repository: it says the dataset was too easy, not that the model is finished.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>1,000 synthetic positive / negative reviews</dd>
+                <dt>Models</dt><dd>Logistic regression and Multinomial Naive Bayes</dd>
+                <dt>Result</dt><dd>1.00 accuracy for both on 200 test rows</dd>
+                <dt>Read</dt><dd>A suspicious score — likely template overlap between splits</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Published the result as-is instead of quietly replacing it with a friendlier number.</li>
+                <li>Wrote down the next check: a harder, real review set with neutral examples and negation.</li>
+                <li>Kept the Streamlit demo small so the model can be swapped in one file.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/Sentiment_Analysis_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 04 — TOO GOOD TO BE TRUE">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <path d="M34 62h170a10 10 0 0 1 10 10v62a10 10 0 0 1-10 10H84l-24 20v-20H34a10 10 0 0 1-10-10V72a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
+                <text x="52" y="96" font-size="26" font-family="Georgia,serif" stroke="none">+</text>
+                <path d="M80 102h90M80 116h64" stroke="currentColor"/>
+                <path d="M236 112h112a10 10 0 0 1 10 10v52a10 10 0 0 1-10 10h-26v18l-22-18h-64a10 10 0 0 1-10-10v-52a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
+                <text x="252" y="146" font-size="26" font-family="Georgia,serif" stroke="none">−</text>
+                <path d="M280 152h50M280 166h34" stroke="currentColor"/>
+                <path d="M34 214h332" stroke="currentColor"/>
+                <text x="34" y="240" font-size="9" font-family="Georgia,serif" stroke="none">1.00 accuracy</text>
+                <text x="34" y="258" font-size="6" stroke="none">SYNTHETIC DATA · 200 TEST ROWS · BOTH MODELS</text>
+                <text x="300" y="240" font-size="6" stroke="none">SUSPICIOUS</text>
+                <path d="M300 246l72 0" stroke="currentColor" stroke-dasharray="2 3"/>
               </svg>
             </figure>
           </div>
