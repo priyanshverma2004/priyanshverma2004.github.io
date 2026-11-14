@@ -250,8 +250,7 @@ document.documentElement.classList.add('js');
       </div>
 
       <div class="records">
-        <!-- R-001 -->
-        <details class="record" id="r-001" data-tags="genai nlp flask python llm gemini">
+<details class="record" id="r-001" data-tags="genai nlp flask python llm gemini">
           <summary>
             <span class="record__no">R-001</span>
             <span class="record__title">AI Interview Coach</span>
@@ -308,62 +307,9 @@ document.documentElement.classList.add('js');
           </div>
         </details>
 
-        <!-- R-002 -->
-        <details class="record" id="r-002" data-tags="nlp ml python scikit-learn text classification">
+<details class="record" id="r-002" data-tags="ml python scikit-learn streamlit data churn">
           <summary>
             <span class="record__no">R-002</span>
-            <span class="record__title">Email Spam Classifier</span>
-            <span class="record__role">NLP · scikit-learn</span>
-            <span class="record__metric"><b>97.1%</b>1,035 held-out emails</span>
-            <span class="record__year">2026</span>
-            <span class="record__chev" aria-hidden="true"></span>
-          </summary>
-          <div class="record__body">
-            <div class="record__text">
-              <p>A text classifier that separates ham from spam with a bag-of-words representation and Multinomial Naive Bayes. The interesting part was not the model; it was measuring it against a baseline and reporting the class that matters.</p>
-              <dl class="spec">
-                <dt>Data</dt><dd>5,171 labelled emails — 3,672 ham, 1,499 spam</dd>
-                <dt>Split</dt><dd>80 / 20 at random_state 42 — 1,035 emails held out</dd>
-                <dt>Baseline</dt><dd>Predict the majority class: 71.7% (742 / 1,035)</dd>
-                <dt>Result</dt><dd>97.1% accuracy; spam precision 0.95, recall 0.95, F1 0.95</dd>
-              </dl>
-              <ul class="bullets">
-                <li>Kept the model deliberately simple, so a later TF-IDF or SVM version has something real to beat.</li>
-                <li>Reported per-class precision and recall, because missing spam and flagging a genuine email have different costs.</li>
-                <li>Noted the dataset's Enron-era vocabulary: this model learned 2001 spam, not 2026 spam.</li>
-              </ul>
-              <p class="links">
-                <a href="https://github.com/priyanshverma2004/email_spam" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-                <a href="/work/email-spam/">Full record →</a>
-              </p>
-            </div>
-            <figure class="plate" data-caption="FIG. 02 — CONFUSION, IN ONE PAGE">
-              <svg viewBox="0 0 400 280" aria-hidden="true">
-                <rect x="40" y="62" width="168" height="132" rx="2" stroke="currentColor" fill="none"/>
-                <path d="M40 62l84 62 84-62" stroke="currentColor" fill="none"/>
-                <path d="M40 194l64-50M208 194l-64-50" stroke="currentColor" opacity=".45"/>
-                <circle cx="278" cy="76" r="36" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
-                <text x="278" y="74" font-size="15" font-family="Georgia,serif" text-anchor="middle" stroke="none">97.1%</text>
-                <text x="278" y="88" font-size="5.5" text-anchor="middle" stroke="none">ACCURACY</text>
-                <text x="232" y="138" font-size="6" text-anchor="start" stroke="none">BASELINE 71.0</text>
-                <rect x="232" y="148" width="68" height="5" fill="currentColor" opacity=".2"/>
-                <rect x="232" y="148" width="48" height="5" fill="currentColor"/>
-                <text x="232" y="170" font-size="6" stroke="none">HAM F1 .98</text>
-                <rect x="232" y="178" width="68" height="5" fill="currentColor" opacity=".2"/>
-                <rect x="232" y="178" width="46" height="5" fill="currentColor"/>
-                <text x="232" y="200" font-size="6" stroke="none">SPAM F1 .95</text>
-                <text x="40" y="32" font-size="7" stroke="none">5,171 EMAILS · 1,035 HELD OUT</text>
-                <path d="M40 222h168" stroke="currentColor"/>
-                <text x="40" y="240" font-size="5.6" stroke="none">COUNTVECTORIZER → MULTINOMIAL NB</text>
-              </svg>
-            </figure>
-          </div>
-        </details>
-
-        <!-- R-003 -->
-        <details class="record" id="r-003" data-tags="ml python scikit-learn streamlit data churn">
-          <summary>
-            <span class="record__no">R-003</span>
             <span class="record__title">Customer Churn Prediction</span>
             <span class="record__role">ML · Streamlit</span>
             <span class="record__metric"><b>0.868 AUC</b>200 test rows</span>
@@ -411,10 +357,9 @@ document.documentElement.classList.add('js');
           </div>
         </details>
 
-        <!-- R-004 -->
-        <details class="record" id="r-004" data-tags="nlp ml python streamlit sentiment">
+<details class="record" id="r-003" data-tags="nlp ml python streamlit sentiment">
           <summary>
-            <span class="record__no">R-004</span>
+            <span class="record__no">R-003</span>
             <span class="record__title">Sentiment Analysis</span>
             <span class="record__role">NLP · a cautionary tale</span>
             <span class="record__metric"><b>100%</b>and that is the problem</span>
@@ -456,14 +401,10 @@ document.documentElement.classList.add('js');
             </figure>
           </div>
         </details>
-      </div>
 
-      <p class="small muted" data-empty hidden style="padding:1.2rem 0">No records match that search. <button type="button" data-clear style="text-decoration:underline">Clear it</button>.</p>
-
-      <!-- R-005 -->
-      <details class="record" id="r-005" data-tags="ml cv vision yolo pytorch object detection">
+<details class="record" id="r-004" data-tags="ml cv vision yolo pytorch object detection">
         <summary>
-          <span class="record__no">R-005</span>
+          <span class="record__no">R-004</span>
           <span class="record__title">Airport X-ray screening</span>
           <span class="record__role">CV · YOLO26n</span>
           <span class="record__metric"><b>0.887</b>mAP@50, 12 classes</span>
@@ -524,10 +465,9 @@ document.documentElement.classList.add('js');
         </div>
       </details>
 
-      <!-- R-006 -->
-      <details class="record" id="r-006" data-tags="genai python fastapi react llm rag gemini groq">
+<details class="record" id="r-005" data-tags="genai python fastapi react llm rag gemini groq">
         <summary>
-          <span class="record__no">R-006</span>
+          <span class="record__no">R-005</span>
           <span class="record__title">FridgeAI</span>
           <span class="record__role">Full-stack · FastAPI + React</span>
           <span class="record__metric"><b>20</b>endpoints, RAG</span>
@@ -577,6 +517,61 @@ document.documentElement.classList.add('js');
         </div>
       </details>
 
+<details class="record" id="r-006" data-tags="nlp ml python scikit-learn text classification">
+          <summary>
+            <span class="record__no">R-006</span>
+            <span class="record__title">Email Spam Classifier</span>
+            <span class="record__role">NLP · scikit-learn</span>
+            <span class="record__metric"><b>97.1%</b>1,035 held-out emails</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A text classifier that separates ham from spam with a bag-of-words representation and Multinomial Naive Bayes. The interesting part was not the model; it was measuring it against a baseline and reporting the class that matters.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>5,171 labelled emails — 3,672 ham, 1,499 spam</dd>
+                <dt>Split</dt><dd>80 / 20 at random_state 42 — 1,035 emails held out</dd>
+                <dt>Baseline</dt><dd>Predict the majority class: 71.7% (742 / 1,035)</dd>
+                <dt>Result</dt><dd>97.1% accuracy; spam precision 0.95, recall 0.95, F1 0.95</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Kept the model deliberately simple, so a later TF-IDF or SVM version has something real to beat.</li>
+                <li>Reported per-class precision and recall, because missing spam and flagging a genuine email have different costs.</li>
+                <li>Noted the dataset's Enron-era vocabulary: this model learned 2001 spam, not 2026 spam.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/email_spam" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="/work/email-spam/">Full record →</a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 02 — CONFUSION, IN ONE PAGE">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <rect x="40" y="62" width="168" height="132" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M40 62l84 62 84-62" stroke="currentColor" fill="none"/>
+                <path d="M40 194l64-50M208 194l-64-50" stroke="currentColor" opacity=".45"/>
+                <circle cx="278" cy="76" r="36" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
+                <text x="278" y="74" font-size="15" font-family="Georgia,serif" text-anchor="middle" stroke="none">97.1%</text>
+                <text x="278" y="88" font-size="5.5" text-anchor="middle" stroke="none">ACCURACY</text>
+                <text x="232" y="138" font-size="6" text-anchor="start" stroke="none">BASELINE 71.0</text>
+                <rect x="232" y="148" width="68" height="5" fill="currentColor" opacity=".2"/>
+                <rect x="232" y="148" width="48" height="5" fill="currentColor"/>
+                <text x="232" y="170" font-size="6" stroke="none">HAM F1 .98</text>
+                <rect x="232" y="178" width="68" height="5" fill="currentColor" opacity=".2"/>
+                <rect x="232" y="178" width="46" height="5" fill="currentColor"/>
+                <text x="232" y="200" font-size="6" stroke="none">SPAM F1 .95</text>
+                <text x="40" y="32" font-size="7" stroke="none">5,171 EMAILS · 1,035 HELD OUT</text>
+                <path d="M40 222h168" stroke="currentColor"/>
+                <text x="40" y="240" font-size="5.6" stroke="none">COUNTVECTORIZER → MULTINOMIAL NB</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+      </div>
+
+      <p class="small muted" data-empty hidden style="padding:1.2rem 0">No records match that search. <button type="button" data-clear style="text-decoration:underline">Clear it</button>.</p>
+
+
       <!-- Also filed -->
       <div class="also">
         <div class="also__head">
@@ -585,21 +580,21 @@ document.documentElement.classList.add('js');
         </div>
         <ul class="archive-list">
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/NLP_Exps" target="_blank" rel="noopener">
-            <span class="id">R-005</span><span class="name">NLP experiments <em>— preprocessing, vectorisation, SMS spam</em></span><span class="kind">10 notebooks</span><span class="yr">2026</span></a></li>
+            <span class="id">R-013</span><span class="name">NLP experiments <em>— preprocessing, vectorisation, SMS spam</em></span><span class="kind">10 notebooks</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/DL_exps-" target="_blank" rel="noopener">
-            <span class="id">R-006</span><span class="name">Deep learning experiments <em>— CNNs, LSTMs, autoencoders</em></span><span class="kind">Coursework</span><span class="yr">2026</span></a></li>
+            <span class="id">R-014</span><span class="name">Deep learning experiments <em>— CNNs, LSTMs, autoencoders</em></span><span class="kind">Coursework</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/ML_mini_prj" target="_blank" rel="noopener">
-            <span class="id">R-007</span><span class="name">Telco churn, full dataset <em>— SMOTE, decision tree vs. forest</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
+            <span class="id">R-013</span><span class="name">Telco churn, full dataset <em>— SMOTE, decision tree vs. forest</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/CRISP-DM-Case-Study-on-Netflix-s-Recommendation" target="_blank" rel="noopener">
-            <span class="id">R-008</span><span class="name">CRISP-DM case study <em>— Netflix recommendations</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
+            <span class="id">R-014</span><span class="name">CRISP-DM case study <em>— Netflix recommendations</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/Assignment-2-ADS" target="_blank" rel="noopener">
-            <span class="id">R-009</span><span class="name">Smartphone market analysis <em>— cleaning and EDA</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
+            <span class="id">R-013</span><span class="name">Smartphone market analysis <em>— cleaning and EDA</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/PriyanshVerma-gen-ai-foundations." target="_blank" rel="noopener">
-            <span class="id">R-010</span><span class="name">Generative AI foundations <em>— vector labs and mini apps</em></span><span class="kind">GenAI</span><span class="yr">2026</span></a></li>
+            <span class="id">R-014</span><span class="name">Generative AI foundations <em>— vector labs and mini apps</em></span><span class="kind">GenAI</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/MLTP" target="_blank" rel="noopener">
-            <span class="id">R-011</span><span class="name">ML practical notebook <em>— coursework</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
+            <span class="id">R-013</span><span class="name">ML practical notebook <em>— coursework</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
           <li><a class="archive-row archive-row--note" href="https://github.com/priyanshverma2004/Discord_Bot" target="_blank" rel="noopener">
-            <span class="id">R-012</span><span class="name">Discord bot <em>— idea and skeleton, no working code yet</em><span class="noteflag">unfinished</span></span><span class="kind">WIP</span><span class="yr">2026</span></a></li>
+            <span class="id">R-014</span><span class="name">Discord bot <em>— idea and skeleton, no working code yet</em><span class="noteflag">unfinished</span></span><span class="kind">WIP</span><span class="yr">2026</span></a></li>
         </ul>
       </div>
     </div>
