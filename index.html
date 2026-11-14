@@ -15,7 +15,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="The Index — Priyansh Verma">
 <meta property="og:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
-<meta property="og:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP and LLM applications. Four projects, with the numbers and the caveats.">
+<meta property="og:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Five projects, with the numbers and the caveats.">
 <meta property="og:url" content="https://priyanshverma2004.github.io/">
 <meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
-<meta name="twitter:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP and LLM applications. Four projects, with the numbers and the caveats.">
+<meta name="twitter:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Five projects, with the numbers and the caveats.">
 <meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
 <meta name="twitter:image:alt" content="A cream index card reading Priyansh Verma, machine learning and generative AI, with a red OPEN TO WORK stamp.">
 
@@ -228,7 +228,7 @@ document.documentElement.classList.add('js');
       <div class="section__head">
         <p class="kicker">02 — Selected records</p>
         <div>
-          <h2 id="work-title">Four projects, with the numbers and the caveats.</h2>
+          <h2 id="work-title">Five projects, with the numbers and the caveats.</h2>
           <p>Each record states what it does, what it was measured on, and what I would fix next. Open one to read the short version; follow the link for the full case study.</p>
         </div>
       </div>
@@ -244,6 +244,7 @@ document.documentElement.classList.add('js');
           <button class="chip" type="button" data-filter="genai" aria-pressed="false">GenAI</button>
           <button class="chip" type="button" data-filter="nlp" aria-pressed="false">NLP</button>
           <button class="chip" type="button" data-filter="ml" aria-pressed="false">ML</button>
+          <button class="chip" type="button" data-filter="vision" aria-pressed="false">Vision</button>
         </div>
         <p class="count" data-count aria-live="polite">4 records</p>
       </div>
@@ -459,11 +460,75 @@ document.documentElement.classList.add('js');
 
       <p class="small muted" data-empty hidden style="padding:1.2rem 0">No records match that search. <button type="button" data-clear style="text-decoration:underline">Clear it</button>.</p>
 
+      <!-- R-005 -->
+      <details class="record" id="r-005" data-tags="ml cv vision yolo pytorch object detection">
+        <summary>
+          <span class="record__no">R-005</span>
+          <span class="record__title">Airport X-ray screening</span>
+          <span class="record__role">CV · YOLO26n</span>
+          <span class="record__metric"><b>0.887</b>mAP@50, 12 classes</span>
+          <span class="record__year">2026</span>
+          <span class="record__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="record__body">
+          <div class="record__text">
+            <p>A YOLO26n detector for 12 prohibited-item classes in X-ray baggage images, trained twice — once with every augmentation disabled, once with the full policy — so the effect of augmentation is measured instead of assumed.</p>
+            <dl class="spec">
+              <dt>Data</dt><dd>13,728 X-ray images — 10,982 train / 1,373 val / 1,373 test, 12 classes</dd>
+              <dt>Baseline</dt><dd>YOLO26n, 30 epochs, no augmentation: mAP@50 0.796, recall 0.734</dd>
+              <dt>Augmented</dt><dd>Same model and epochs, full augmentation: mAP@50 0.887, recall 0.813</dd>
+              <dt>Status</dt><dd>Weights and dataset not committed; Streamlit demo runs locally</dd>
+            </dl>
+            <ul class="bullets">
+              <li>Measured the augmentation instead of assuming it: +9.0 mAP@50 and +7.9 recall points on the same validation set.</li>
+              <li>Reported per-class numbers honestly: HandCuffs at 0.981 mAP@50, Knife at 0.757 and 0.60 recall.</li>
+              <li>Exposed a confidence threshold in the Streamlit app so a screener can trade recall for false alarms without retraining.</li>
+            </ul>
+            <p class="small muted" style="margin-top:.9rem">Honest limitation: validation metrics only, a batch-size confound (8 vs. 4) between the two runs, a single training run, and no deployed demo. It is a measured improvement on one benchmark, not a deployment case.</p>
+            <p class="links">
+              <a href="https://github.com/priyanshverma2004/airport-baggage-screening" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+              <a href="/work/airport-baggage-screening/">Full record →</a>
+            </p>
+          </div>
+          <figure class="plate" data-caption="FIG. 05 — BASELINE VS. AUGMENTED">
+            <svg viewBox="0 0 400 280" aria-hidden="true">
+              <rect x="28" y="22" width="344" height="236" rx="3" stroke="currentColor" fill="none"/>
+              <path d="M28 54h344" stroke="currentColor"/>
+              <circle cx="44" cy="38" r="2.6" fill="currentColor"/><circle cx="54" cy="38" r="2.6" fill="currentColor"/><circle cx="64" cy="38" r="2.6" fill="currentColor"/>
+              <text x="40" y="86" font-size="7" stroke="none">mAP@50</text>
+              <rect x="40" y="96" width="60" height="12" fill="currentColor" opacity=".25"/>
+              <rect x="40" y="96" width="48" height="12" fill="currentColor"/>
+              <text x="106" y="106" font-size="7" stroke="none">0.796</text>
+              <rect x="40" y="116" width="60" height="12" fill="currentColor" opacity=".25"/>
+              <rect x="40" y="116" width="53" height="12" fill="currentColor"/>
+              <text x="106" y="126" font-size="7" stroke="none">0.887</text>
+              <text x="40" y="150" font-size="7" stroke="none">RECALL</text>
+              <rect x="40" y="160" width="60" height="12" fill="currentColor" opacity=".25"/>
+              <rect x="40" y="160" width="44" height="12" fill="currentColor"/>
+              <text x="106" y="170" font-size="7" stroke="none">0.734</text>
+              <rect x="40" y="180" width="60" height="12" fill="currentColor" opacity=".25"/>
+              <rect x="40" y="180" width="49" height="12" fill="currentColor"/>
+              <text x="106" y="190" font-size="7" stroke="none">0.813</text>
+              <text x="200" y="90" font-size="9" font-family="Georgia,serif" stroke="none">+9.0 pts</text>
+              <text x="200" y="104" font-size="6" stroke="none">mAP@50</text>
+              <text x="200" y="160" font-size="9" font-family="Georgia,serif" stroke="none">+7.9 pts</text>
+              <text x="200" y="174" font-size="6" stroke="none">RECALL</text>
+              <text x="290" y="90" font-size="7" stroke="none">12 CLASSES</text>
+              <text x="290" y="104" font-size="6" stroke="none">GUN · KNIFE · LIGHTER</text>
+              <text x="290" y="118" font-size="6" stroke="none">SCISSORS · HAMMER</text>
+              <text x="290" y="150" font-size="7" stroke="none">13,728 IMAGES</text>
+              <text x="290" y="164" font-size="6" stroke="none">80 / 10 / 10 SPLIT</text>
+              <text x="290" y="190" font-size="6" stroke="none">VAL METRICS ONLY</text>
+            </svg>
+          </figure>
+        </div>
+      </details>
+
       <!-- Also filed -->
       <div class="also">
         <div class="also__head">
           <h3>Also filed</h3>
-          <span>13 public repositories · 8 listed</span>
+          <span>14 public repositories · 8 listed</span>
         </div>
         <ul class="archive-list">
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/NLP_Exps" target="_blank" rel="noopener">

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-plain="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Airport X-ray screening — a full record | Priyansh Verma</title>
+<meta name="description" content="Case study: a YOLO26n detector for 12 prohibited-item classes in X-ray baggage images. Baseline vs. augmented training, per-class metrics, and an honest list of what does not work.">
+<link rel="canonical" href="https://priyanshverma2004.github.io/work/airport-baggage-screening/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#f2ecdf">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Index — Priyansh Verma">
+<meta property="og:title" content="Airport X-ray screening — a full record">
+<meta property="og:description" content="YOLO26n on 13,728 X-ray images, 12 classes. Baseline mAP@50 0.796, augmented 0.887. What I trained, what I measured, what is still wrong.">
+<meta property="og:url" content="https://priyanshverma2004.github.io/work/airport-baggage-screening/">
+<meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Airport X-ray screening — a full record">
+<meta name="twitter:description" content="YOLO26n on 13,728 X-ray images, 12 classes. Baseline mAP@50 0.796, augmented 0.887.">
+<meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/archive.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "AI Interview Coach",
+  "author": {"@type": "Person", "name": "Priyansh Verma", "url": "https://priyanshverma2004.github.io/"},
+  "dateCreated": "2026",
+  "programmingLanguage": ["Python"],
+  "about": ["Computer vision", "Object detection", "YOLO", "PyTorch"],
+  "url": "https://priyanshverma2004.github.io/work/airport-baggage-screening/",
+  "codeRepository": "https://github.com/priyanshverma2004/airport-baggage-screening"
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/" aria-label="Priyansh Verma — home"><b>P.VERMA</b><span>/</span><small>INDEX</small></a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="/#work">Work</a>
+      <a href="/#about">Profile</a>
+      <a href="/#toolkit">Toolkit</a>
+      <a href="/#log">Log</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <button class="mode mono" type="button" data-plain-toggle aria-pressed="false" title="Plain, recruiter-friendly view"><span class="mode__label">Plain view</span></button>
+      <button class="iconbtn" type="button" data-theme-toggle aria-pressed="false" aria-label="Turn the lights off" title="Lights off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+      </button>
+      <a class="btn btn--sm" href="/resume/">Résumé</a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <header class="subhero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Index</a><span>/</span><a href="/#work">Work</a><span>/</span><span aria-current="page">R-005</span>
+      </nav>
+      <h1>Airport X-ray screening</h1>
+      <p class="dek">A YOLO26n detector for 12 prohibited-item classes in X-ray baggage images — trained twice, once without augmentation and once with, so the effect of the augmentation is measured instead of assumed.</p>
+      <div class="subhero__meta">
+        <span><b>R-005</b></span>
+        <span>2026</span>
+        <span>Solo build</span>
+        <span>Python · Ultralytics · PyTorch · Streamlit</span>
+        <span><a href="https://github.com/priyanshverma2004/airport-baggage-screening" target="_blank" rel="noopener">Repository ↗</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap cs">
+    <aside class="cs__side" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ul>
+        <li><a href="#task">1. The task</a></li>
+        <li><a href="#data">2. The data</a></li>
+        <li><a href="#training">3. Training</a></li>
+        <li><a href="#results">4. Results</a></li>
+        <li><a href="#misses">5. What it misses</a></li>
+        <li><a href="#reproduce">6. Reproduce it</a></li>
+      </ul>
+    </aside>
+
+    <div class="cs__main">
+      <section id="task">
+        <h2>1. The task</h2>
+        <p>Airport baggage screening is an object-detection problem with an awkward shape: the objects are small, overlapping, and rendered in false colour on a cluttered background. A model that is 90% accurate in the aggregate can still miss the one knife in a bag, and missing one is the failure mode that matters.</p>
+        <p>This project trains a YOLO26n detector on a 12-class X-ray dataset and asks a specific, measurable question: <strong>does augmentation actually help, or does it just add training time?</strong> The answer is computed, not assumed — both runs use the same base model, the same data, the same 30 epochs, and the same validation set. Only the augmentation policy differs.</p>
+        <div class="callout"><b>The constraint that shaped everything:</b> no pretrained detector was assumed to be good enough. The baseline run disables every augmentation, so the second run has a fair, measured opponent rather than a strawman.</div>
+      </section>
+
+      <section id="data">
+        <h2>2. The data</h2>
+        <p>13,728 X-ray images, 12 prohibited-item classes, split 80 / 10 / 10 (10,982 train, 1,373 validation, 1,373 test). Each image carries YOLO-format bounding boxes; annotations were validated for class range, coordinate bounds and box dimensions before training.</p>
+        <dl class="spec">
+          <dt>Classes</dt><dd>Baton · Pliers · Hammer · Powerbank · Scissors · Wrench · Gun · Bullet · Sprayer · HandCuffs · Knife · Lighter</dd>
+          <dt>Split</dt><dd>10,982 / 1,373 / 1,373 — stratified by image, not by instance</dd>
+          <dt>Instances</dt><dd>1,794 objects in the validation split (≈1.3 per image)</dd>
+          <dt>Source</dt><dd>A public 12-class X-ray baggage dataset (not redistributed here; see the repository's <code>data/</code> folder)</dd>
+        </dl>
+        <p class="small muted" style="margin-top:.9rem">The dataset itself is not in the repository. The notebooks expect the layout shown in <code>data/README.md</code>, and the class set matches the public PIDray benchmark's 12 categories.</p>
+      </section>
+
+      <section id="training">
+        <h2>3. How it was trained</h2>
+        <p>YOLO26n (2.38 M parameters, 5.3 GFLOPs) was trained twice for 30 epochs at imgsz 640. The baseline disables every augmentation; the second run adds HSV jitter, rotation, translation, scale, shear, horizontal flip, mosaic and mixup. Evaluation uses the same validation set and the same Ultralytics metrics for both runs, so the comparison is like-for-like except where noted in section 5.</p>
+        <div class="flow" aria-label="Training flow">
+          <div class="flow__node"><b>01 · EDA</b>counts, labels, annotation checks</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>02 · PREPROCESS</b>resize, normalise, YOLO format</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>03 · AUGMENT</b>rotation, mosaic, mixup, flip</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>04 · TRAIN ×2</b>baseline (none) vs. augmented</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>05 · EVALUATE</b>P, R, mAP@50, mAP@50–95</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>06 · SCREEN</b>Streamlit app, live threshold</div>
+        </div>
+        <dl class="spec">
+          <dt>Model</dt><dd>YOLO26n — 2.38 M params, 5.3 GFLOPs, 122 layers</dd>
+          <dt>Epochs</dt><dd>30 per run, imgsz 640</dd>
+          <dt>Baseline</dt><dd>batch 8, all augmentation disabled</dd>
+          <dt>Augmented</dt><dd>batch 4, HSV jitter, rotation 5°, translation 0.1, scale 0.5, shear 2°, flip 0.5, mosaic 1.0, mixup 0.1</dd>
+          <dt>Hardware</dt><dd>Apple M4, MPS backend</dd>
+        </dl>
+      </section>
+
+      <section id="results">
+        <h2>4. Results</h2>
+        <dl class="kv">
+          <div><dt>mAP@50</dt><dd>0.887<small>baseline 0.796, +9.0 pts</small></dd></div>
+          <div><dt>mAP@50–95</dt><dd>0.662<small>baseline 0.629, +3.3 pts</small></dd></div>
+          <div><dt>Precision</dt><dd>0.900<small>baseline 0.867, +3.3 pts</small></dd></div>
+          <div><dt>Recall</dt><dd>0.813<small>baseline 0.734, +7.9 pts</small></dd></div>
+        </dl>
+        <p>Augmentation helped on every metric, and the gain is largest where it matters most for screening: recall, +7.9 points. The classes that improved most are the small, ambiguous ones — but they are also still the weakest, which is the honest headline.</p>
+        <ul class="bullets">
+          <li>Best class: HandCuffs at 0.969 precision / 0.955 recall / 0.981 mAP@50.</li>
+          <li>Weakest: Knife at 0.840 / 0.598 / 0.757 and Lighter at 0.939 / 0.683 / 0.723 — both small, thin objects on a noisy background.</li>
+          <li>The Streamlit app exposes a confidence threshold slider (0.10–0.90) so a screener can trade recall for false alarms without retraining.</li>
+        </ul>
+        <p class="links">
+          <a href="https://github.com/priyanshverma2004/airport-baggage-screening" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a href="https://github.com/priyanshverma2004/airport-baggage-screening/blob/main/docs/model-comparison.png" target="_blank" rel="noopener">Comparison chart ↗</a>
+        </p>
+      </section>
+
+      <section id="misses">
+        <h2>5. What it misses</h2>
+        <ul>
+          <li><strong>Validation metrics, not test metrics.</strong> The numbers above are on the 1,373-image validation split. The test split was run for predictions but not scored in this version of the work, so the headline could be optimistic.</li>
+          <li><strong>One confound in the comparison.</strong> The baseline used batch 8 and the augmented run batch 4, so the gain is not pure augmentation — a fairer follow-up holds the batch size constant.</li>
+          <li><strong>Single run, no seed sweep.</strong> One training run per condition; there is no variance estimate.</li>
+          <li><strong>Small-object weakness.</strong> Knife (0.60 recall) and Lighter (0.68) remain the hard cases. The dataset has enough instances of them; the model has not learned them yet.</li>
+          <li><strong>No deployed demo.</strong> The Streamlit app needs the trained weights, which are not committed. The repository ships the notebooks and the app, not the model.</li>
+          <li><strong>Dataset not redistributed.</strong> The images are not in the repository; reproduce with the layout in <code>data/README.md</code>.</li>
+        </ul>
+        <div class="callout"><b>What this does not prove:</b> that the detector is safe to use at a checkpoint. There is no false-positive cost analysis, no adversarial or occluded-bag test, and no comparison against a second architecture. It is a measured improvement on one benchmark, not a deployment case.</div>
+      </section>
+
+      <section id="reproduce">
+        <h2>6. Reproduce it</h2>
+        <p>Clone the repository, install the dependencies, place the dataset under <code>data/</code>, then run the notebooks in order and the app.</p>
+        <dl class="spec">
+          <dt>Code</dt><dd><a href="https://github.com/priyanshverma2004/airport-baggage-screening" target="_blank" rel="noopener">github.com/priyanshverma2004/airport-baggage-screening</a></dd>
+          <dt>Train</dt><dd><code>pip install -r requirements.txt</code>, then notebooks 04 and 06</dd>
+          <dt>App</dt><dd><code>streamlit run app/app.py</code> (needs <code>results/augmented_yolo26n/weights/best.pt</code>)</dd>
+          <dt>Hardware</dt><dd>Tested on an Apple M4 with MPS; CPU fallback is automatic</dd>
+        </dl>
+        <ul class="bullets">
+          <li><code>01</code>–<code>03</code> audit and prepare the data.</li>
+          <li><code>04</code>, <code>05</code> train and evaluate the baseline.</li>
+          <li><code>06</code>, <code>07</code> train and evaluate the augmented model.</li>
+          <li><code>08</code> compares the two runs; <code>09</code> runs live detection on a sample.</li>
+        </ul>
+        <p class="links" style="margin-top:1.6rem">
+          <a href="https://github.com/priyanshverma2004/airport-baggage-screening" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a href="/work/churn/">Previous record: Customer Churn →</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <p><b style="font-weight:500;color:var(--ink)">The Index</b> — R-005 of 014. Written and built by Priyansh Verma.</p>
+      <div class="footer__meta">
+        <a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:priyanshverma2004@gmail.com">Email</a>
+        <a href="/resume/">Résumé</a>
+        <a href="/#work">All records</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Set in Instrument Serif, Newsreader &amp; IBM Plex Mono. No cookies, no trackers, no analytics.</span>
+      <span>Last updated 14 November 2026 · © 2026 Priyansh Verma</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/archive.js" defer></script>
+</body>
+</html>
