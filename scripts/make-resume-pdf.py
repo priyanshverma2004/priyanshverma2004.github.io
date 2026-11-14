@@ -136,11 +136,13 @@ def make():
          "and the run's confounds honestly. Ships a Streamlit screening app with a live threshold.",
          "github.com/priyanshverma2004/airport-baggage-screening · priyanshverma2004.github.io/work/airport-baggage-screening/",
          "https://github.com/priyanshverma2004/airport-baggage-screening"),
-        ("Sentiment Analysis — NLP · Logistic Regression / Naive Bayes",
-         "Trained and served a sentiment classifier on 1,000 synthetic reviews. Both models scored 1.00 on the "
-         "held-out set; documented that as a dataset problem rather than a model achievement.",
-         "github.com/priyanshverma2004/Sentiment_Analysis_prj",
-         "https://github.com/priyanshverma2004/Sentiment_Analysis_prj"),
+        ("FridgeAI — FastAPI · React · FAISS RAG",
+         "A full-stack kitchen assistant: photograph a fridge to build an inventory, then plan meals, "
+         "generate a shopping list and chat with a recipe-grounded assistant. FastAPI + PostgreSQL + "
+         "JWT auth backend, React/TanStack frontend, Gemini/Groq vision for scanning, FAISS over a "
+         "recipe book. Documented the Lovable-scaffolded UI honestly.",
+         "github.com/priyanshverma2004/fridgeai · priyanshverma2004.github.io/work/fridgeai/",
+         "https://github.com/priyanshverma2004/fridgeai"),
     ]
     for title, body, label, url in projects:
         s.append(KeepTogether([
@@ -154,9 +156,10 @@ def make():
         ("Languages", "Python (primary), C, C++, JavaScript, SQL"),
         ("ML", "scikit-learn, pandas, NumPy; classification, pipelines, class imbalance (SMOTE), evaluation"),
         ("Deep learning", "TensorFlow / Keras; CNNs, LSTMs, convolutional autoencoders; YOLO (Ultralytics) for object detection"),
-        ("NLP", "Preprocessing, tokenisation, CountVectorizer / TF-IDF, text classification"),
-        ("Generative AI", "Gemini API, prompt design, structured JSON output, Flask integration"),
-        ("Web", "Flask, Jinja, Streamlit, HTML/CSS/JS; React, Next.js, Node, Express, MongoDB (coursework)"),
+        ("NLP", "Preprocessing, tokenisation, CountVectorizer / TF-IDF, text classification, RAG, FAISS, sentence-transformers"),
+        ("Generative AI", "Gemini API, prompt design, structured JSON output, Flask / FastAPI integration"),
+        ("Backend", "FastAPI, SQLAlchemy, PostgreSQL, JWT auth (passlib/bcrypt)"),
+        ("Web", "Flask, Jinja, Streamlit, HTML/CSS/JS; React, TanStack Router, Vite, Tailwind (coursework)"),
         ("Tools", "Git, GitHub, Jupyter, VS Code, IntelliJ IDEA"),
     ]
     rows = [[Paragraph(k, styles["skill"]), Paragraph(v, styles["skill"])] for k, v in skills]
