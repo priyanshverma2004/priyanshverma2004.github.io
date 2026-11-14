@@ -101,7 +101,7 @@ def make():
     for title, meta, body in [
         ("MCA, Generative AI — Alliance University",
          "Bengaluru, India · Aug 2025 — present",
-         "Coursework: machine learning, deep learning, natural language processing, generative AI, data structures and algorithms."),
+         "Coursework: machine learning, deep learning, natural language processing, generative AI, retrieval-augmented generation, computer vision."),
         ("BCA, Computer Applications — Kalinga University",
          "Raipur, India · Aug 2022 — May 2025 · 74.28%",
          "Foundations in programming, databases, operating systems, networking and web development."),
@@ -118,17 +118,6 @@ def make():
          "Includes a mock mode so the app can be reviewed without an API key.",
          "github.com/priyanshverma2004/interviewer-coach · priyanshverma2004.github.io/work/interviewer-coach/",
          "https://github.com/priyanshverma2004/interviewer-coach"),
-        ("Email Spam Classifier — CountVectorizer · Multinomial Naive Bayes",
-         "Classified 5,171 emails with an 80/20 split. 97.1% accuracy on 1,035 held-out emails against a 71.7% "
-         "majority-class baseline; spam F1 0.95, ham F1 0.98. Reported per-class metrics, not accuracy alone.",
-         "github.com/priyanshverma2004/email_spam · priyanshverma2004.github.io/work/email-spam/",
-         "https://github.com/priyanshverma2004/email_spam"),
-        ("Customer Churn Prediction — scikit-learn · Streamlit",
-         "Built a churn pipeline on 1,000 customer records with one-hot encoding, scaling and a random forest "
-         "(200 trees, depth 10). 0.868 ROC-AUC on 200 held-out rows against a 0.859 logistic baseline; served "
-         "the saved pipeline through a Streamlit form.",
-         "github.com/priyanshverma2004/Custo_churn_pred_prj · priyanshverma2004.github.io/work/churn/",
-         "https://github.com/priyanshverma2004/Custo_churn_pred_prj"),
         ("Airport X-ray Screening — YOLO26n · Ultralytics · Streamlit",
          "Trained a YOLO26n detector on 13,728 X-ray images across 12 prohibited-item classes. "
          "Baseline (no augmentation) reached 0.796 mAP@50 and 0.734 recall; with augmentation, "
