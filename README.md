@@ -8,6 +8,9 @@ Static HTML, hand-written CSS, one small vanilla JS file. No build step, no fram
 no npm, no analytics, no cookies. Every word of content is in the HTML, so the site is
 fully readable and navigable with JavaScript switched off.
 
+**Live:** <https://priyanshverma2004.github.io> — deployed free on GitHub Pages from
+this repository (`main`, repository root).
+
 ---
 
 ## Run it locally
@@ -111,25 +114,24 @@ grep -rn "priyanshverma2004.github.io" --include="*.html" --include="*.xml" --in
 The site **must be served from a domain root**, because every internal link starts with
 `/`. All four options below do that.
 
-### GitHub Pages (free, current default)
+### GitHub Pages (live)
 
-The repository must be named **`priyanshverma2004.github.io`** — a user/organisation
-Pages site, which serves at the domain root. A normal project repo would serve at
-`/repo-name/` and every root-relative link would break.
+The site is already deployed at **<https://priyanshverma2004.github.io>**, built from
+`main` at the repository root with HTTPS enforced. To publish a change:
 
 ```bash
 cd portfolio
-git init
-git add .
-git commit -m "The Index — portfolio"
-git branch -M main
-git remote add origin git@github.com:priyanshverma2004/priyanshverma2004.github.io.git
-git push -u origin main
+git add -A
+git commit -m "Describe the change"
+git push
 ```
 
-Then: **Settings → Pages → Source: Deploy from a branch → main / (root)**.
-Live at `https://priyanshverma2004.github.io` in about a minute.
-`404.html` is picked up automatically.
+Pages rebuilds in about a minute. `404.html` is picked up automatically and `.nojekyll`
+stops GitHub from running Jekyll over the folder.
+
+The repository **must** stay named `priyanshverma2004.github.io`: that makes it a
+user/organisation Pages site served at the domain root. A normal project repo would be
+served at `/repo-name/`, and every root-relative link would break.
 
 ### Netlify (free)
 
