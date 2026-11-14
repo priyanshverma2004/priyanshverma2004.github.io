@@ -129,6 +129,13 @@ def make():
          "the saved pipeline through a Streamlit form.",
          "github.com/priyanshverma2004/Custo_churn_pred_prj · priyanshverma2004.github.io/work/churn/",
          "https://github.com/priyanshverma2004/Custo_churn_pred_prj"),
+        ("Airport X-ray Screening — YOLO26n · Ultralytics · Streamlit",
+         "Trained a YOLO26n detector on 13,728 X-ray images across 12 prohibited-item classes. "
+         "Baseline (no augmentation) reached 0.796 mAP@50 and 0.734 recall; with augmentation, "
+         "0.887 mAP@50 and 0.813 recall. Reported per-class results (HandCuffs 0.981, Knife 0.757) "
+         "and the run's confounds honestly. Ships a Streamlit screening app with a live threshold.",
+         "github.com/priyanshverma2004/airport-baggage-screening · priyanshverma2004.github.io/work/airport-baggage-screening/",
+         "https://github.com/priyanshverma2004/airport-baggage-screening"),
         ("Sentiment Analysis — NLP · Logistic Regression / Naive Bayes",
          "Trained and served a sentiment classifier on 1,000 synthetic reviews. Both models scored 1.00 on the "
          "held-out set; documented that as a dataset problem rather than a model achievement.",
@@ -146,7 +153,7 @@ def make():
     skills = [
         ("Languages", "Python (primary), C, C++, JavaScript, SQL"),
         ("ML", "scikit-learn, pandas, NumPy; classification, pipelines, class imbalance (SMOTE), evaluation"),
-        ("Deep learning", "TensorFlow / Keras; CNNs, LSTMs, convolutional autoencoders"),
+        ("Deep learning", "TensorFlow / Keras; CNNs, LSTMs, convolutional autoencoders; YOLO (Ultralytics) for object detection"),
         ("NLP", "Preprocessing, tokenisation, CountVectorizer / TF-IDF, text classification"),
         ("Generative AI", "Gemini API, prompt design, structured JSON output, Flask integration"),
         ("Web", "Flask, Jinja, Streamlit, HTML/CSS/JS; React, Next.js, Node, Express, MongoDB (coursework)"),

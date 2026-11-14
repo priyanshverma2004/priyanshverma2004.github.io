@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-plain="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FridgeAI — a full record | Priyansh Verma</title>
+<meta name="description" content="Case study: a full-stack kitchen assistant — inventory, meal planning, shopping lists and a grounded chat — built with FastAPI, React and a recipe RAG index.">
+<link rel="canonical" href="https://priyanshverma2004.github.io/work/fridgeai/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#f2ecdf">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Index — Priyansh Verma">
+<meta property="og:title" content="FridgeAI — a full record">
+<meta property="og:description" content="FastAPI + React: inventory, meal planning, shopping lists and a grounded chat. What I built, what is scaffolded, what I'd fix.">
+<meta property="og:url" content="https://priyanshverma2004.github.io/work/fridgeai/">
+<meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FridgeAI — a full record">
+<meta name="twitter:description" content="FastAPI + React: inventory, meal planning, shopping lists and a grounded chat.">
+<meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/archive.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "AI Interview Coach",
+  "author": {"@type": "Person", "name": "Priyansh Verma", "url": "https://priyanshverma2004.github.io/"},
+  "dateCreated": "2026",
+  "programmingLanguage": ["Python", "TypeScript"],
+  "about": ["Generative AI", "FastAPI", "RAG", "React"],
+  "url": "https://priyanshverma2004.github.io/work/fridgeai/",
+  "codeRepository": "https://github.com/priyanshverma2004/fridgeai"
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/" aria-label="Priyansh Verma — home"><b>P.VERMA</b><span>/</span><small>INDEX</small></a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="/#work">Work</a>
+      <a href="/#about">Profile</a>
+      <a href="/#toolkit">Toolkit</a>
+      <a href="/#log">Log</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <button class="mode mono" type="button" data-plain-toggle aria-pressed="false" title="Plain, recruiter-friendly view"><span class="mode__label">Plain view</span></button>
+      <button class="iconbtn" type="button" data-theme-toggle aria-pressed="false" aria-label="Turn the lights off" title="Lights off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+      </button>
+      <a class="btn btn--sm" href="/resume/">Résumé</a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <header class="subhero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="/">Index</a><span>/</span><a href="/#work">Work</a><span>/</span><span aria-current="page">R-006</span></nav>
+      <h1>FridgeAI</h1>
+      <p class="dek">A full-stack kitchen assistant: photograph a fridge, get an inventory, then plan meals, build a shopping list and ask cooking questions — all grounded in what you actually have and a recipe index.</p>
+      <div class="subhero__meta">
+        <span><b>R-006</b></span><span>2026</span><span>Solo build</span>
+        <span>Python · FastAPI · React · FAISS · Groq · Gemini</span>
+        <span><a href="https://github.com/priyanshverma2004/fridgeai" target="_blank" rel="noopener">Repository ↗</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap cs">
+    <aside class="cs__side" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ul>
+        <li><a href="#task">1. The task</a></li>
+        <li><a href="#build">2. How it is built</a></li>
+        <li><a href="#decisions">3. Decisions and trade-offs</a></li>
+        <li><a href="#evidence">4. What is verifiable</a></li>
+        <li><a href="#next">5. What I'd fix next</a></li>
+      </ul>
+    </aside>
+    <div class="cs__main">
+      <section id="task">
+        <h2>1. The task</h2>
+        <p>Most meal-planning apps ask you to type what you have. That is the friction: people do not know what is in their fridge, and they will not maintain a list. FridgeAI starts from a photo, builds the inventory for you, and only then plans meals, so the plan is constrained by reality rather than by memory.</p>
+        <p>The scope is deliberately broad — inventory, expiry tracking, meal planning, shopping lists, a grounded chat — because the interesting engineering is in keeping those features consistent with one source of truth: the inventory table.</p>
+        <div class="callout"><b>The honest framing:</b> the React UI was scaffolded with Lovable. I am not claiming the component library as my own work. The parts I wrote and can defend are the FastAPI backend, the data model, the RAG index, the scan pipeline, and the meal-planning and shopping-list logic.</div>
+      </section>
+
+      <section id="build">
+        <h2>2. How it is built</h2>
+        <p>FastAPI serves a JWT-authenticated API over PostgreSQL; the React frontend calls it through TanStack Router. Inventory is the central table; meal planning, shopping lists and the chat all read from it.</p>
+        <div class="flow" aria-label="Request flow">
+          <div class="flow__node"><b>01 · SCAN</b>photo → Gemini/Groq vision → items</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>02 · INVENTORY</b>SQLAlchemy, expiry, categories</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>03 · PLAN</b>meals from what exists</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>04 · SHOP</b>missing ingredients</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>05 · CHAT</b>Groq + FAISS recipe index</div>
+        </div>
+        <dl class="spec">
+          <dt>Backend</dt><dd>FastAPI · SQLAlchemy · PostgreSQL · JWT (passlib/bcrypt, python-jose)</dd>
+          <dt>Frontend</dt><dd>React 19 · TanStack Router · Vite · Tailwind · shadcn/ui (Lovable-scaffolded)</dd>
+          <dt>AI</dt><dd>Gemini / Groq vision for scanning · Groq LLM for chat · FAISS + sentence-transformers over a recipe PDF</dd>
+          <dt>Endpoints</dt><dd>≈20 across auth, inventory, meal plan, shopping, notifications, profile, chat, conversations, scan</dd>
+          <dt>Code</dt><dd>~4.7k lines of Python in the backend; ~12k lines of TypeScript in the frontend</dd>
+        </dl>
+      </section>
+
+      <section id="decisions">
+        <h2>3. Decisions and trade-offs</h2>
+        <h3>Inventory as the single source of truth</h3>
+        <p>Meal plans, shopping lists and the chat all read from the inventory table. That keeps them consistent by construction, at the cost of a slightly heavier read path. The alternative — each feature keeping its own copy — is how these apps drift out of sync.</p>
+        <h3>RAG over a recipe book, not over the internet</h3>
+        <p>The chat is grounded in a FAISS index built from a recipe PDF with sentence-transformers. That keeps answers on-topic and reproducible, and it is honest about what the model knows. It also means the assistant is only as good as that one book.</p>
+        <h3>JWT in the client, no refresh tokens</h3>
+        <p>Access tokens expire after a day and there is no refresh flow. Simple and stateless, but a real product would need refresh tokens and revocation. The hardcoded development secret was removed in cleanup; set <code>SECRET_KEY</code> in <code>.env</code>.</p>
+        <h3>Vision scanning as the entry point</h3>
+        <p>Scanning is the feature that makes the rest usable, so it got the most engineering: two providers (Gemini and Groq), a normalised JSON contract, and validation that the response actually contains items before anything is saved.</p>
+      </section>
+
+      <section id="evidence">
+        <h2>4. What is verifiable</h2>
+        <dl class="kv">
+          <div><dt>Backend LOC</dt><dd>~4,700<small>Python, across routes, services, models, RAG</small></dd></div>
+          <div><dt>Frontend LOC</dt><dd>~12,300<small>TypeScript/TSX; mostly shadcn/ui components</small></dd></div>
+          <div><dt>Endpoints</dt><dd>≈20<small>auth, inventory, meal plan, shopping, notifications, profile, chat, conversations, scan</small></dd></div>
+          <div><dt>RAG index</dt><dd>FAISS<small>sentence-transformers/all-MiniLM-L6-v2 over a recipe PDF</small></dd></div>
+        </dl>
+        <p>The repository includes the FastAPI backend, the React frontend, the ingest script and the committed FAISS index. There is no public deployment: it needs a PostgreSQL database and two API keys, and I would rather link a repository that runs than a demo that does not.</p>
+        <div class="callout"><b>What this does not prove:</b> that the UI is mine — it is scaffolded. That the app is production-ready — it is not: no tests, no CI, hardcoded CORS origins, no refresh tokens, an empty <code>generator.py</code>, and a single commit. Those are open issues, listed below, not hidden.</div>
+      </section>
+
+      <section id="next">
+        <h2>5. What I'd fix next</h2>
+        <ul>
+          <li><strong>Tests and CI.</strong> There are none. The first priority before calling this a product.</li>
+          <li><strong>Fill in <code>rag/generator.py</code></strong> or delete it — right now the chat route calls Groq directly.</li>
+          <li><strong>Refresh tokens and revocation</strong> instead of 24-hour access tokens.</li>
+          <li><strong>Configurable CORS</strong> and a real deployment target (Render or Fly.io with a managed Postgres).</li>
+          <li><strong>Replace the Lovable UI</strong> with components I own, or at least document which files are generated.</li>
+          <li><strong>Cost and latency logging</strong> on the scan and chat paths — vision calls are the expensive part.</li>
+        </ul>
+        <p class="links" style="margin-top:1.6rem">
+          <a href="https://github.com/priyanshverma2004/fridgeai" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a href="/work/airport-baggage-screening/">Previous record: Airport X-ray screening →</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <p><b style="font-weight:500;color:var(--ink)">The Index</b> — R-006 of 015. Written and built by Priyansh Verma.</p>
+      <div class="footer__meta">
+        <a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:priyanshverma2004@gmail.com">Email</a>
+        <a href="/resume/">Résumé</a>
+        <a href="/#work">All records</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Set in Instrument Serif, Newsreader &amp; IBM Plex Mono. No cookies, no trackers, no analytics.</span>
+      <span>Last updated 14 November 2026 · © 2026 Priyansh Verma</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/archive.js" defer></script>
+</body>
+</html>

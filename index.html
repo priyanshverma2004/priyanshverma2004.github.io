@@ -15,7 +15,7 @@
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="The Index — Priyansh Verma">
 <meta property="og:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
-<meta property="og:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Five projects, with the numbers and the caveats.">
+<meta property="og:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Six projects, with the numbers and the caveats.">
 <meta property="og:url" content="https://priyanshverma2004.github.io/">
 <meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
 <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
-<meta name="twitter:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Five projects, with the numbers and the caveats.">
+<meta name="twitter:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP, CV and LLM applications. Six projects, with the numbers and the caveats.">
 <meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
 <meta name="twitter:image:alt" content="A cream index card reading Priyansh Verma, machine learning and generative AI, with a red OPEN TO WORK stamp.">
 
@@ -228,7 +228,7 @@ document.documentElement.classList.add('js');
       <div class="section__head">
         <p class="kicker">02 — Selected records</p>
         <div>
-          <h2 id="work-title">Five projects, with the numbers and the caveats.</h2>
+          <h2 id="work-title">Six projects, with the numbers and the caveats.</h2>
           <p>Each record states what it does, what it was measured on, and what I would fix next. Open one to read the short version; follow the link for the full case study.</p>
         </div>
       </div>
@@ -246,7 +246,7 @@ document.documentElement.classList.add('js');
           <button class="chip" type="button" data-filter="ml" aria-pressed="false">ML</button>
           <button class="chip" type="button" data-filter="vision" aria-pressed="false">Vision</button>
         </div>
-        <p class="count" data-count aria-live="polite">4 records</p>
+        <p class="count" data-count aria-live="polite">6 records</p>
       </div>
 
       <div class="records">
@@ -524,11 +524,64 @@ document.documentElement.classList.add('js');
         </div>
       </details>
 
+      <!-- R-006 -->
+      <details class="record" id="r-006" data-tags="genai python fastapi react llm rag gemini groq">
+        <summary>
+          <span class="record__no">R-006</span>
+          <span class="record__title">FridgeAI</span>
+          <span class="record__role">Full-stack · FastAPI + React</span>
+          <span class="record__metric"><b>20</b>endpoints, RAG</span>
+          <span class="record__year">2026</span>
+          <span class="record__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="record__body">
+          <div class="record__text">
+            <p>A kitchen assistant that starts from a photo of your fridge: it builds an inventory, plans meals from what you have, generates a shopping list for what you are missing, and answers cooking questions grounded in a recipe index.</p>
+            <dl class="spec">
+              <dt>Backend</dt><dd>FastAPI · SQLAlchemy · PostgreSQL · JWT auth · ≈20 endpoints</dd>
+              <dt>AI</dt><dd>Gemini / Groq vision for scanning · Groq LLM · FAISS RAG over a recipe PDF</dd>
+              <dt>Frontend</dt><dd>React 19 · TanStack Router · Vite · Tailwind (UI scaffolded with Lovable)</dd>
+              <dt>Status</dt><dd>No public demo — needs a database and two API keys</dd>
+            </dl>
+            <ul class="bullets">
+              <li>Inventory is the single source of truth: meal plans, shopping lists and chat all read from it.</li>
+              <li>Scanning validates the model's JSON before anything is saved — two providers, one normalised contract.</li>
+              <li>Documented the scaffolding honestly: the component library is generated, the backend and RAG are mine.</li>
+            </ul>
+            <p class="small muted" style="margin-top:.9rem">Honest limitation: no tests, no CI, hardcoded CORS origins, an empty <code>generator.py</code>, and a UI I did not write by hand. It is a working prototype, not a product.</p>
+            <p class="links">
+              <a href="https://github.com/priyanshverma2004/fridgeai" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+              <a href="/work/fridgeai/">Full record →</a>
+            </p>
+          </div>
+          <figure class="plate" data-caption="FIG. 06 — INVENTORY AS SOURCE OF TRUTH">
+            <svg viewBox="0 0 400 280" aria-hidden="true">
+              <rect x="28" y="22" width="344" height="236" rx="3" stroke="currentColor" fill="none"/>
+              <path d="M28 54h344" stroke="currentColor"/>
+              <circle cx="44" cy="38" r="2.6" fill="currentColor"/><circle cx="54" cy="38" r="2.6" fill="currentColor"/><circle cx="64" cy="38" r="2.6" fill="currentColor"/>
+              <rect x="44" y="74" width="150" height="34" rx="2" stroke="currentColor" fill="none"/>
+              <text x="56" y="95" font-size="8" stroke="none">INVENTORY</text>
+              <path d="M194 91h34" stroke="currentColor"/><path d="M224 87l6 4-6 4" fill="none" stroke="currentColor"/>
+              <rect x="232" y="74" width="120" height="34" rx="2" stroke="currentColor" fill="none"/>
+              <text x="244" y="95" font-size="8" stroke="none">MEAL PLAN</text>
+              <rect x="44" y="124" width="150" height="34" rx="2" stroke="currentColor" fill="none"/>
+              <text x="56" y="145" font-size="8" stroke="none">SHOPPING LIST</text>
+              <path d="M194 141h34" stroke="currentColor"/><path d="M224 137l6 4-6 4" fill="none" stroke="currentColor"/>
+              <rect x="232" y="124" width="120" height="34" rx="2" stroke="currentColor" fill="none"/>
+              <text x="244" y="145" font-size="8" stroke="none">CHAT (RAG)</text>
+              <rect x="44" y="174" width="308" height="34" rx="2" stroke="currentColor" fill="none" stroke-dasharray="4 4"/>
+              <text x="56" y="195" font-size="8" stroke="none">SCAN → GEMINI / GROQ VISION → ITEMS</text>
+              <text x="44" y="232" font-size="6" stroke="none">FASTAPI · POSTGRESQL · JWT · FAISS · 20 ENDPOINTS</text>
+            </svg>
+          </figure>
+        </div>
+      </details>
+
       <!-- Also filed -->
       <div class="also">
         <div class="also__head">
           <h3>Also filed</h3>
-          <span>14 public repositories · 8 listed</span>
+          <span>15 public repositories · 8 listed</span>
         </div>
         <ul class="archive-list">
           <li><a class="archive-row" href="https://github.com/priyanshverma2004/NLP_Exps" target="_blank" rel="noopener">
