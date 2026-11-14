@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-plain="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Email Spam Classifier — a full record | Priyansh Verma</title>
+<meta name="description" content="Case study: 5,171 emails, CountVectorizer and Multinomial Naive Bayes, 97.1% on 1,035 held-out emails against a 71.7% majority baseline — and the limits of that number.">
+<link rel="canonical" href="https://priyanshverma2004.github.io/work/email-spam/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#f2ecdf">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Index — Priyansh Verma">
+<meta property="og:title" content="Email Spam Classifier — a full record">
+<meta property="og:description" content="97.1% on 1,035 held-out emails, against a 71.7% majority baseline. The pipeline, the per-class numbers, and why the dataset is already dated.">
+<meta property="og:url" content="https://priyanshverma2004.github.io/work/email-spam/">
+<meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Email Spam Classifier — a full record">
+<meta name="twitter:description" content="97.1% on 1,035 held-out emails, against a 71.7% majority baseline.">
+<meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/archive.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Email Spam Classifier",
+  "author": {"@type": "Person", "name": "Priyansh Verma", "url": "https://priyanshverma2004.github.io/"},
+  "dateCreated": "2026",
+  "programmingLanguage": ["Python"],
+  "about": ["Natural Language Processing", "Text classification", "scikit-learn", "Naive Bayes"],
+  "url": "https://priyanshverma2004.github.io/work/email-spam/",
+  "codeRepository": "https://github.com/priyanshverma2004/email_spam"
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/" aria-label="Priyansh Verma — home"><b>P.VERMA</b><span>/</span><small>INDEX</small></a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="/#work">Work</a><a href="/#about">Profile</a><a href="/#toolkit">Toolkit</a><a href="/#log">Log</a><a href="/#contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <button class="mode mono" type="button" data-plain-toggle aria-pressed="false" title="Plain, recruiter-friendly view"><span class="mode__label">Plain view</span></button>
+      <button class="iconbtn" type="button" data-theme-toggle aria-pressed="false" aria-label="Turn the lights off" title="Lights off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+      </button>
+      <a class="btn btn--sm" href="/resume/">Résumé</a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <header class="subhero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Index</a><span>/</span><a href="/#work">Work</a><span>/</span><span aria-current="page">R-002</span>
+      </nav>
+      <h1>Email Spam Classifier</h1>
+      <p class="dek">5,171 labelled emails. A bag-of-words model, a majority baseline, and a per-class report. The accuracy is 97.1% — the useful part is knowing what that number does and does not cover.</p>
+      <div class="subhero__meta">
+        <span><b>R-002</b></span><span>2026</span><span>Solo build</span><span>Python · pandas · scikit-learn</span>
+        <span><a href="https://github.com/priyanshverma2004/email_spam" target="_blank" rel="noopener">Repository ↗</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap cs">
+    <aside class="cs__side" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ul>
+        <li><a href="#task">1. The task</a></li>
+        <li><a href="#pipeline">2. The pipeline</a></li>
+        <li><a href="#numbers">3. The numbers</a></li>
+        <li><a href="#limits">4. What it misses</a></li>
+        <li><a href="#next">5. What I'd fix</a></li>
+        <li><a href="#reproduce">6. Reproduce it</a></li>
+      </ul>
+    </aside>
+
+    <div class="cs__main">
+      <section id="task">
+        <h2>1. The task</h2>
+        <p>Binary text classification: given the subject line and body of an email, decide whether it is <em>ham</em> or <em>spam</em>. It is the canonical first NLP project, which is exactly why it is worth doing carefully. A model can reach a high accuracy here while being useless in the two ways that matter: missing spam, or flagging a real message.</p>
+        <p>The dataset is a labelled collection of 5,171 emails — 3,672 ham and 1,499 spam. It is Enron-era mail; the vocabulary and the scams are from the early 2000s. That is a limitation of the data, not something a better model can fix.</p>
+      </section>
+
+      <section id="pipeline">
+        <h2>2. The pipeline</h2>
+        <div class="flow">
+          <div class="flow__node"><b>LOAD</b>pandas · <code>spam_ham_dataset.csv</code></div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>SPLIT</b>80 / 20 · random_state 42</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>VECTORISE</b>CountVectorizer · English stopwords</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>CLASSIFY</b>Multinomial Naive Bayes</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>REPORT</b>accuracy · per-class P / R / F1</div>
+        </div>
+        <p>The model is deliberately simple. A bag-of-words representation discards word order and treats every token independently; Naive Bayes assumes those tokens are independent given the class. Both assumptions are false, and both are good enough to set a baseline. The point of keeping the first model simple is that any later gain is measurable against something honest.</p>
+        <div class="callout"><b>One decision worth naming:</b> I reported per-class precision and recall instead of only accuracy. For a spam filter, a false positive (a real email marked as spam) is usually worse than a false negative. A single accuracy number hides that trade-off completely.</div>
+      </section>
+
+      <section id="numbers">
+        <h2>3. The numbers</h2>
+        <dl class="kv">
+          <div><dt>Dataset</dt><dd>5,171<small>3,672 ham · 1,499 spam</small></dd></div>
+          <div><dt>Held out</dt><dd>1,035<small>20% split, random_state 42</small></dd></div>
+          <div><dt>Accuracy</dt><dd>97.1%<small>1,005 of 1,035 correct</small></dd></div>
+          <div><dt>Baseline</dt><dd>71.7%<small>predict “ham” every time (742 / 1,035)</small></dd></div>
+        </dl>
+        <table style="width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.9rem">
+          <caption class="sr-only">Classification report on the held-out split</caption>
+          <thead>
+            <tr style="border-bottom:1px solid var(--ink);text-align:left">
+              <th scope="col" style="padding:.45rem .3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">Class</th>
+              <th scope="col" style="padding:.45rem .3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">Precision</th>
+              <th scope="col" style="padding:.45rem .3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">Recall</th>
+              <th scope="col" style="padding:.45rem .3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">F1</th>
+              <th scope="col" style="padding:.45rem .3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase">Support</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px dotted var(--rule)"><th scope="row" style="padding:.45rem .3rem;font-weight:400">Ham</th><td>0.98</td><td>0.98</td><td>0.98</td><td>742</td></tr>
+            <tr style="border-bottom:1px dotted var(--rule)"><th scope="row" style="padding:.45rem .3rem;font-weight:400">Spam</th><td>0.95</td><td>0.95</td><td>0.95</td><td>293</td></tr>
+            <tr><th scope="row" style="padding:.45rem .3rem;font-weight:400">Accuracy</th><td colspan="3"></td><td>0.97</td></tr>
+          </tbody>
+        </table>
+        <p>So the honest sentence is: <strong>the model catches roughly 19 of every 20 spam emails, and mislabels roughly one in fifty genuine emails.</strong> Both halves matter. The second half is the one a user would complain about.</p>
+      </section>
+
+      <section id="limits">
+        <h2>4. What the number misses</h2>
+        <ul>
+          <li><strong>It is one split, one seed.</strong> There is no cross-validation here, so 97.1% is a point estimate from 1,035 examples, not a confidence interval.</li>
+          <li><strong>The split is not stratified.</strong> It lands close to the overall class balance (71.7% ham in test vs. 71.0% overall), but that is luck, not design.</li>
+          <li><strong>The data is dated.</strong> Enron-era subject lines and 2001 scam patterns do not describe modern phishing, business-email compromise, or Unicode obfuscation.</li>
+          <li><strong>Bag-of-words is easy to fool.</strong> Word order and negation disappear. “Not free” and “free” are made of different tokens, but a model that has learned “free” as a spam cue will not understand the difference on its own.</li>
+          <li><strong>The threshold is the default.</strong> A 0.5 cut-off is not a business decision. For a real filter, the threshold should follow the relative cost of false positives and false negatives.</li>
+          <li><strong>Nothing is deployed.</strong> There is no drift monitoring, because there is no service. The notebook is the artifact.</li>
+        </ul>
+      </section>
+
+      <section id="next">
+        <h2>5. What I would fix next</h2>
+        <ul>
+          <li>Stratify the split and run five-fold cross-validation; report mean and standard deviation instead of one number.</li>
+          <li>Compare CountVectorizer + NB against TF-IDF + logistic regression and a linear SVM. Keep the confusion matrices side by side.</li>
+          <li>Plot a precision–recall curve and pick the threshold from the cost of a false positive, rather than accepting 0.5.</li>
+          <li>Do an error analysis of the false positives. For a spam filter, those are the expensive mistakes.</li>
+          <li>Test on a modern corpus to measure the drift the Enron-era data cannot show.</li>
+        </ul>
+      </section>
+
+      <section id="reproduce">
+        <h2>6. Reproduce it</h2>
+        <p>The notebook and the CSV are both in the repository. From a clean environment:</p>
+        <pre style="overflow:auto;border:1px solid var(--rule);background:var(--paper-2);padding:.9rem 1rem;font-family:var(--mono);font-size:.72rem;line-height:1.8"><code>pip install pandas scikit-learn jupyter
+jupyter notebook Email_spam1.ipynb</code></pre>
+        <p class="small muted">The notebook uses <code>CountVectorizer(stop_words="english")</code> and <code>MultinomialNB()</code>, with an 80/20 split at <code>random_state=42</code>.</p>
+        <p class="links" style="margin-top:1.6rem">
+          <a href="https://github.com/priyanshverma2004/email_spam" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a href="/work/churn/">Next record: Customer Churn →</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <p><b style="font-weight:500;color:var(--ink)">The Index</b> — R-002 of 013. Written and built by Priyansh Verma.</p>
+      <div class="footer__meta">
+        <a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:priyanshverma2004@gmail.com">Email</a>
+        <a href="/resume/">Résumé</a>
+        <a href="/#work">All records</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Set in Instrument Serif, Newsreader &amp; IBM Plex Mono. No cookies, no trackers, no analytics.</span>
+      <span>Last updated 14 November 2026 · © 2026 Priyansh Verma</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/archive.js" defer></script>
+</body>
+</html>

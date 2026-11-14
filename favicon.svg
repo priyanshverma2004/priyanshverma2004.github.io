@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="P.V. index card">
+  <rect x="5" y="11" width="54" height="46" rx="3" fill="#faf5e9" stroke="#1a1714" stroke-width="2.2"/>
+  <path d="M13 11h24v9H13z" fill="#a3321f"/>
+  <rect x="9" y="14" width="46" height="39" rx="1" fill="none" stroke="#cec2ab" stroke-width="1"/>
+  <text x="32" y="44" font-family="Georgia, 'Times New Roman', serif" font-size="25" text-anchor="middle" fill="#1a1714">PV</text>
+  <path d="M20 48h24" stroke="#cec2ab" stroke-width="1.5"/>
+</svg>

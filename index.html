@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-plain="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Priyansh Verma — Machine Learning &amp; Generative AI</title>
+<meta name="description" content="Priyansh Verma is an MCA (Generative AI) student in Bengaluru building ML, NLP and LLM applications — with the evidence, the baselines and the caveats.">
+<link rel="canonical" href="https://priyanshverma2004.github.io/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Priyansh Verma">
+<meta name="theme-color" content="#f2ecdf">
+<meta name="color-scheme" content="light dark">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="The Index — Priyansh Verma">
+<meta property="og:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
+<meta property="og:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP and LLM applications. Four projects, with the numbers and the caveats.">
+<meta property="og:url" content="https://priyanshverma2004.github.io/">
+<meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A cream index card reading Priyansh Verma, machine learning and generative AI, with a red OPEN TO WORK stamp.">
+<meta property="og:locale" content="en_IN">
+<meta property="profile:first_name" content="Priyansh">
+<meta property="profile:last_name" content="Verma">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Priyansh Verma — Machine Learning &amp; Generative AI">
+<meta name="twitter:description" content="An MCA (GenAI) student in Bengaluru building ML, NLP and LLM applications. Four projects, with the numbers and the caveats.">
+<meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta name="twitter:image:alt" content="A cream index card reading Priyansh Verma, machine learning and generative AI, with a red OPEN TO WORK stamp.">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/archive.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://priyanshverma2004.github.io/#person",
+      "name": "Priyansh Verma",
+      "givenName": "Priyansh",
+      "familyName": "Verma",
+      "url": "https://priyanshverma2004.github.io/",
+      "image": "https://priyanshverma2004.github.io/assets/img/og.png",
+      "email": "mailto:priyanshverma2004@gmail.com",
+      "jobTitle": "Machine Learning & Generative AI Student",
+      "description": "MCA (Generative AI) student at Alliance University, Bengaluru, building machine learning, NLP and LLM applications.",
+      "address": {"@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN"},
+      "alumniOf": [
+        {"@type": "CollegeOrUniversity", "name": "Alliance University"},
+        {"@type": "CollegeOrUniversity", "name": "Kalinga University"}
+      ],
+      "knowsAbout": ["Machine Learning", "Deep Learning", "Natural Language Processing", "Generative AI", "Python", "Flask", "scikit-learn"],
+      "sameAs": [
+        "https://github.com/priyanshverma2004",
+        "https://www.linkedin.com/in/priyansh-verma-7173572aa/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://priyanshverma2004.github.io/#website",
+      "url": "https://priyanshverma2004.github.io/",
+      "name": "The Index — Priyansh Verma",
+      "description": "A card-catalogue portfolio of machine learning work by Priyansh Verma.",
+      "publisher": {"@id": "https://priyanshverma2004.github.io/#person"},
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+<script>
+/* Open at the top. Two things used to drag a reload halfway down the page:
+   the browser restoring the previous scroll position, and a leftover #work
+   hash from an earlier nav click. Section anchors are navigation, not
+   destinations, so the hash is dropped before first paint and scroll
+   restoration is handed to us. Runs in <head> so nothing flashes. */
+(function () {
+  var h = window.history;
+  try { if ("scrollRestoration" in h) h.scrollRestoration = "manual"; } catch (e) {}
+  try {
+    if (window.location.hash) h.replaceState(h.state, "", window.location.pathname + window.location.search);
+  } catch (e) {}
+})();
+document.documentElement.classList.add('js');
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/" aria-label="Priyansh Verma — home">
+      <b>P.VERMA</b><span>/</span><small>INDEX</small>
+    </a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">Profile</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#log">Log</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <button class="mode mono" type="button" data-plain-toggle aria-pressed="false" title="Plain, recruiter-friendly view">
+        <span class="mode__label">Plain view</span>
+      </button>
+      <button class="iconbtn" type="button" data-theme-toggle aria-pressed="false" aria-label="Turn the lights off" title="Lights off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+      </button>
+      <a class="btn btn--sm" href="/resume/">Résumé</a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="plain-banner" role="status">
+  <div class="wrap">
+    <span>Plain view — decoration off, every record expanded.</span>
+    <button type="button" data-plain-off>Back to the archive</button>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Bengaluru, India · Open to ML / AI roles</p>
+        <h1 id="hero-title">
+          <span class="h1__name">Priyansh Verma</span>
+          <span class="h1__role">Machine learning &amp; generative AI</span>
+        </h1>
+        <p class="lede">MCA student building small, complete systems: a <b>Gemini-powered interview coach</b>, a <b>97.1% spam filter</b>, a churn model that ships with its own caveats. I write down the decisions behind them, too.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#work">Open the index
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="mailto:priyanshverma2004@gmail.com">Email me</a>
+        </div>
+        <ul class="hero__facts">
+          <li><span>Now</span>MCA (Generative AI), Alliance University</li>
+          <li><span>Focus</span>ML · NLP · LLM applications</li>
+          <li><span>Based</span>Bengaluru, Karnataka</li>
+        </ul>
+      </div>
+
+      <div class="cabinet" data-drawer data-open="false">
+        <div class="cabinet__label"><span>AUTHOR FILE</span><b>NO. 001</b></div>
+        <button class="cabinet__handle" type="button" aria-expanded="false" aria-controls="card-back">
+          <svg viewBox="0 0 44 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 8h36"/><circle cx="7" cy="8" r="1.4" fill="currentColor" stroke="none"/><circle cx="37" cy="8" r="1.4" fill="currentColor" stroke="none"/><path d="M14 8V5a8 8 0 0 1 16 0v3"/></svg>
+          <span class="cabinet__handle-text">Turn the card over</span>
+        </button>
+        <div class="cards">
+          <div class="card card--back" aria-hidden="true"></div>
+          <div class="card card--mid" aria-hidden="true"></div>
+          <article class="card card--front">
+            <div class="card__flip">
+              <div class="card__face card__face--front" aria-hidden="true">
+                <div class="card__head"><span>PRIYANSH VERMA</span><span>P.V.</span></div>
+                <div class="card__name">Priyansh<br>Verma</div>
+                <div class="card__meta">MCA · Generative AI<br>Bengaluru, India<br>ML · NLP · LLM apps</div>
+                <div class="card__foot">
+                  <span>EST. 2004<br>FILE 001 / 013</span>
+                  <span class="stamp">OPEN<br>TO WORK</span>
+                </div>
+              </div>
+              <div class="card__face card__face--back" id="card-back" role="group" aria-label="Contact details" inert>
+                <div class="card__head"><span>REVERSE SIDE</span><span>NO. 001</span></div>
+                <p class="card__back-title">Say hello.</p>
+                <ul class="card__back-list">
+                  <li><span>Email</span><a href="mailto:priyanshverma2004@gmail.com">priyanshverma2004@gmail.com</a></li>
+                  <li><span>GitHub</span><a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">github.com/priyanshverma2004</a></li>
+                  <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">in/priyansh-verma</a></li>
+                  <li><span>Résumé</span><a href="/resume/">One page, printable</a></li>
+                </ul>
+                <div class="card__foot">
+                  <span>BENGALURU · INDIA<br>FILE 001 / 013</span>
+                  <span class="stamp">OPEN<br>TO WORK</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="cabinet__hint">The back of the card has the contact details.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABSTRACT ================= -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="kicker">01 — Abstract</p>
+        <div>
+          <h2 id="about-title">I like models that can be checked.</h2>
+        </div>
+      </div>
+      <div class="abstract">
+        <div class="abstract__aside">
+          <span class="mono">Currently</span>
+          <p>MCA (Generative AI)<br>Alliance University, Bengaluru<br>2025 — present</p>
+          <p style="margin-top:.9rem">Building LLM applications with Flask and the Gemini API. Learning retrieval-augmented generation and evaluation.</p>
+          <p style="margin-top:.9rem">Open to internships and entry-level roles in ML, AI engineering and software engineering.</p>
+        </div>
+        <div class="prose">
+          <p class="drop">I came to machine learning through software. The part I care about is where a model stops being a notebook and becomes something a person can use — a Flask app, a small interface, a report someone actually reads.</p>
+          <p>That usually means the unglamorous work: cleaning the CSV, noticing the class imbalance, choosing a baseline, and writing down where the result stops being trustworthy. My strongest project is an interview coach wired to Gemini. My most honest one is a sentiment model that scored 100% — which told me the dataset was too easy, not that the model was finished.</p>
+          <blockquote class="pull">“A metric without its dataset is a rumour.”<cite>My rule for every project page here</cite></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="kicker">02 — Selected records</p>
+        <div>
+          <h2 id="work-title">Four projects, with the numbers and the caveats.</h2>
+          <p>Each record states what it does, what it was measured on, and what I would fix next. Open one to read the short version; follow the link for the full case study.</p>
+        </div>
+      </div>
+
+      <div class="index-tools" data-tools>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+          <span class="sr-only">Search the index</span>
+          <input type="search" placeholder="Search the index — try “spam”, “Gemini”, “churn”" data-search autocomplete="off">
+        </label>
+        <div class="chips" role="group" aria-label="Filter records">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="genai" aria-pressed="false">GenAI</button>
+          <button class="chip" type="button" data-filter="nlp" aria-pressed="false">NLP</button>
+          <button class="chip" type="button" data-filter="ml" aria-pressed="false">ML</button>
+        </div>
+        <p class="count" data-count aria-live="polite">4 records</p>
+      </div>
+
+      <div class="records">
+        <!-- R-001 -->
+        <details class="record" id="r-001" data-tags="genai nlp flask python llm gemini">
+          <summary>
+            <span class="record__no">R-001</span>
+            <span class="record__title">AI Interview Coach</span>
+            <span class="record__role">Flask · Gemini 2.5 Flash</span>
+            <span class="record__metric"><b>8 routes</b>6 templates</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A mock-interview app that adapts to the role, the job description and the candidate's résumé. Gemini writes the questions, scores each answer on communication, technical accuracy and problem solving, and the app turns the session into a report you can revisit.</p>
+              <dl class="spec">
+                <dt>Role</dt><dd>Solo build — interface, backend, prompts</dd>
+                <dt>Stack</dt><dd>Python · Flask · Gemini API · Jinja · Chart.js</dd>
+                <dt>Evidence</dt><dd>8 routes, 6 templates, 4 service modules; each report persisted as JSON</dd>
+                <dt>Status</dt><dd>Runs locally with a Gemini key; no public demo</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Kept interview state server-side so a page refresh does not lose the session.</li>
+                <li>Added a mock mode that returns canned questions when no API key is present, so the interface can be reviewed without credentials.</li>
+                <li>Enforced question order and saved every report to disk — the dashboard is a file listing, not a database.</li>
+              </ul>
+              <p class="small muted" style="margin-top:.9rem">Honest limitation: flat JSON files do not scale and there is no authentication. It is a complete demo, not a multi-user product.</p>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/interviewer-coach" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="/work/interviewer-coach/">Full record →</a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 01 — SESSION FLOW">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <rect x="28" y="22" width="344" height="236" rx="3" stroke="currentColor" fill="none"/>
+                <path d="M28 54h344" stroke="currentColor"/>
+                <circle cx="44" cy="38" r="2.6" fill="currentColor"/><circle cx="54" cy="38" r="2.6" fill="currentColor"/><circle cx="64" cy="38" r="2.6" fill="currentColor"/>
+                <rect x="48" y="76" width="186" height="52" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M60 90h104M60 101h146M60 112h84" stroke="currentColor"/>
+                <rect x="48" y="140" width="186" height="44" rx="2" stroke="currentColor" fill="none" stroke-dasharray="4 4"/>
+                <path d="M60 154h128M60 165h96" stroke="currentColor"/>
+                <rect x="48" y="196" width="86" height="26" rx="2" fill="currentColor" opacity=".9"/>
+                <text x="61" y="213" font-size="7" fill="#f2ecdf" stroke="none">NEXT Q →</text>
+                <path d="M254 76v146" stroke="currentColor" stroke-dasharray="2 4"/>
+                <text x="268" y="84" font-size="7" stroke="none">SCORE</text>
+                <rect x="268" y="94" width="82" height="8" fill="currentColor" opacity=".18"/>
+                <rect x="268" y="94" width="60" height="8" fill="currentColor"/>
+                <rect x="268" y="112" width="82" height="8" fill="currentColor" opacity=".18"/>
+                <rect x="268" y="112" width="44" height="8" fill="currentColor"/>
+                <rect x="268" y="130" width="82" height="8" fill="currentColor" opacity=".18"/>
+                <rect x="268" y="130" width="70" height="8" fill="currentColor"/>
+                <text x="268" y="170" font-size="22" font-family="Georgia,serif" stroke="none">78<tspan font-size="9" font-family="monospace"> / 100</tspan></text>
+                <text x="268" y="190" font-size="5.4" stroke="none">COMMUNICATION · TECHNICAL · LOGIC</text>
+                <path d="M268 204h82" stroke="currentColor"/>
+                <text x="268" y="220" font-size="6" stroke="none">REPORT SAVED AS JSON</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+
+        <!-- R-002 -->
+        <details class="record" id="r-002" data-tags="nlp ml python scikit-learn text classification">
+          <summary>
+            <span class="record__no">R-002</span>
+            <span class="record__title">Email Spam Classifier</span>
+            <span class="record__role">NLP · scikit-learn</span>
+            <span class="record__metric"><b>97.1%</b>1,035 held-out emails</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A text classifier that separates ham from spam with a bag-of-words representation and Multinomial Naive Bayes. The interesting part was not the model; it was measuring it against a baseline and reporting the class that matters.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>5,171 labelled emails — 3,672 ham, 1,499 spam</dd>
+                <dt>Split</dt><dd>80 / 20 at random_state 42 — 1,035 emails held out</dd>
+                <dt>Baseline</dt><dd>Predict the majority class: 71.7% (742 / 1,035)</dd>
+                <dt>Result</dt><dd>97.1% accuracy; spam precision 0.95, recall 0.95, F1 0.95</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Kept the model deliberately simple, so a later TF-IDF or SVM version has something real to beat.</li>
+                <li>Reported per-class precision and recall, because missing spam and flagging a genuine email have different costs.</li>
+                <li>Noted the dataset's Enron-era vocabulary: this model learned 2001 spam, not 2026 spam.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/email_spam" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="/work/email-spam/">Full record →</a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 02 — CONFUSION, IN ONE PAGE">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <rect x="40" y="62" width="168" height="132" rx="2" stroke="currentColor" fill="none"/>
+                <path d="M40 62l84 62 84-62" stroke="currentColor" fill="none"/>
+                <path d="M40 194l64-50M208 194l-64-50" stroke="currentColor" opacity=".45"/>
+                <circle cx="278" cy="76" r="36" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
+                <text x="278" y="74" font-size="15" font-family="Georgia,serif" text-anchor="middle" stroke="none">97.1%</text>
+                <text x="278" y="88" font-size="5.5" text-anchor="middle" stroke="none">ACCURACY</text>
+                <text x="232" y="138" font-size="6" text-anchor="start" stroke="none">BASELINE 71.0</text>
+                <rect x="232" y="148" width="68" height="5" fill="currentColor" opacity=".2"/>
+                <rect x="232" y="148" width="48" height="5" fill="currentColor"/>
+                <text x="232" y="170" font-size="6" stroke="none">HAM F1 .98</text>
+                <rect x="232" y="178" width="68" height="5" fill="currentColor" opacity=".2"/>
+                <rect x="232" y="178" width="46" height="5" fill="currentColor"/>
+                <text x="232" y="200" font-size="6" stroke="none">SPAM F1 .95</text>
+                <text x="40" y="32" font-size="7" stroke="none">5,171 EMAILS · 1,035 HELD OUT</text>
+                <path d="M40 222h168" stroke="currentColor"/>
+                <text x="40" y="240" font-size="5.6" stroke="none">COUNTVECTORIZER → MULTINOMIAL NB</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+
+        <!-- R-003 -->
+        <details class="record" id="r-003" data-tags="ml python scikit-learn streamlit data churn">
+          <summary>
+            <span class="record__no">R-003</span>
+            <span class="record__title">Customer Churn Prediction</span>
+            <span class="record__role">ML · Streamlit</span>
+            <span class="record__metric"><b>0.868 AUC</b>200 test rows</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A churn classifier with a small Streamlit front end: ten customer fields in, churn probability out. I compared a linear baseline with a random forest and selected on ROC-AUC, because the classes are not balanced.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>1,000 Telco-format customer records</dd>
+                <dt>Models</dt><dd>Logistic regression vs. random forest (200 trees, max depth 10)</dd>
+                <dt>Test</dt><dd>200 held-out rows, 20% split</dd>
+                <dt>Result</dt><dd>Random forest 0.868 ROC-AUC, 0.79 accuracy; logistic 0.859</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Wrapped preprocessing and model in one scikit-learn Pipeline, so training and serving cannot drift apart.</li>
+                <li>Chose AUC over accuracy because a model that always predicts “stays” can still look plausible.</li>
+                <li>Kept the caveat visible: 200 test rows means the interval around that AUC is wide.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/Custo_churn_pred_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                <a href="/work/churn/">Full record →</a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 03 — WHO LEAVES">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <text x="28" y="30" font-size="6.5" stroke="none">TENURE → CHURN RISK</text>
+                <path d="M40 204h310M40 204V70" stroke="currentColor"/>
+                <path d="M40 96c62 6 78 28 104 54s48 30 76 34 72 8 118 16" stroke="currentColor" fill="none" stroke-dasharray="4 4"/>
+                <path d="M40 110c58 10 92 34 118 54s66 22 118 24 70 2 74 2" stroke="currentColor" fill="none"/>
+                <g>
+                  <circle cx="94" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M80 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="152" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M138 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="210" cy="132" r="10" stroke="currentColor" fill="none"/><path d="M196 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none"/>
+                  <circle cx="278" cy="132" r="10" stroke="currentColor" fill="none" stroke-dasharray="3 3"/><path d="M264 158c2-10 7-14 14-14s12 4 14 14" stroke="currentColor" fill="none" stroke-dasharray="3 3"/>
+                  <path d="M292 118l18-16" stroke="currentColor"/>
+                  <text x="306" y="100" font-size="6" stroke="none">CHURN</text>
+                </g>
+                <rect x="40" y="224" width="120" height="26" fill="currentColor" opacity=".08"/>
+                <text x="50" y="240" font-size="7" stroke="none">AUC 0.868</text>
+                <text x="174" y="240" font-size="6" stroke="none">RANDOM FOREST · N=200</text>
+              </svg>
+            </figure>
+          </div>
+        </details>
+
+        <!-- R-004 -->
+        <details class="record" id="r-004" data-tags="nlp ml python streamlit sentiment">
+          <summary>
+            <span class="record__no">R-004</span>
+            <span class="record__title">Sentiment Analysis</span>
+            <span class="record__role">NLP · a cautionary tale</span>
+            <span class="record__metric"><b>100%</b>and that is the problem</span>
+            <span class="record__year">2026</span>
+            <span class="record__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="record__body">
+            <div class="record__text">
+              <p>A sentiment classifier trained on 1,000 synthetic reviews. Logistic regression and Naive Bayes both scored 100% on the held-out set. That result is the most useful thing in the repository: it says the dataset was too easy, not that the model is finished.</p>
+              <dl class="spec">
+                <dt>Data</dt><dd>1,000 synthetic positive / negative reviews</dd>
+                <dt>Models</dt><dd>Logistic regression and Multinomial Naive Bayes</dd>
+                <dt>Result</dt><dd>1.00 accuracy for both on 200 test rows</dd>
+                <dt>Read</dt><dd>A suspicious score — likely template overlap between splits</dd>
+              </dl>
+              <ul class="bullets">
+                <li>Published the result as-is instead of quietly replacing it with a friendlier number.</li>
+                <li>Wrote down the next check: a harder, real review set with neutral examples and negation.</li>
+                <li>Kept the Streamlit demo small so the model can be swapped in one file.</li>
+              </ul>
+              <p class="links">
+                <a href="https://github.com/priyanshverma2004/Sentiment_Analysis_prj" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+              </p>
+            </div>
+            <figure class="plate" data-caption="FIG. 04 — TOO GOOD TO BE TRUE">
+              <svg viewBox="0 0 400 280" aria-hidden="true">
+                <path d="M34 62h170a10 10 0 0 1 10 10v62a10 10 0 0 1-10 10H84l-24 20v-20H34a10 10 0 0 1-10-10V72a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
+                <text x="52" y="96" font-size="26" font-family="Georgia,serif" stroke="none">+</text>
+                <path d="M80 102h90M80 116h64" stroke="currentColor"/>
+                <path d="M236 112h112a10 10 0 0 1 10 10v52a10 10 0 0 1-10 10h-26v18l-22-18h-64a10 10 0 0 1-10-10v-52a10 10 0 0 1 10-10Z" stroke="currentColor" fill="none"/>
+                <text x="252" y="146" font-size="26" font-family="Georgia,serif" stroke="none">−</text>
+                <path d="M280 152h50M280 166h34" stroke="currentColor"/>
+                <path d="M34 214h332" stroke="currentColor"/>
+                <text x="34" y="240" font-size="9" font-family="Georgia,serif" stroke="none">1.00 accuracy</text>
+                <text x="34" y="258" font-size="6" stroke="none">SYNTHETIC DATA · 200 TEST ROWS · BOTH MODELS</text>
+                <text x="300" y="240" font-size="6" stroke="none">SUSPICIOUS</text>
+                <path d="M300 246l72 0" stroke="currentColor" stroke-dasharray="2 3"/>
+              </svg>
+            </figure>
+          </div>
+        </details>
+      </div>
+
+      <p class="small muted" data-empty hidden style="padding:1.2rem 0">No records match that search. <button type="button" data-clear style="text-decoration:underline">Clear it</button>.</p>
+
+      <!-- Also filed -->
+      <div class="also">
+        <div class="also__head">
+          <h3>Also filed</h3>
+          <span>13 public repositories · 8 listed</span>
+        </div>
+        <ul class="archive-list">
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/NLP_Exps" target="_blank" rel="noopener">
+            <span class="id">R-005</span><span class="name">NLP experiments <em>— preprocessing, vectorisation, SMS spam</em></span><span class="kind">10 notebooks</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/DL_exps-" target="_blank" rel="noopener">
+            <span class="id">R-006</span><span class="name">Deep learning experiments <em>— CNNs, LSTMs, autoencoders</em></span><span class="kind">Coursework</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/ML_mini_prj" target="_blank" rel="noopener">
+            <span class="id">R-007</span><span class="name">Telco churn, full dataset <em>— SMOTE, decision tree vs. forest</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/CRISP-DM-Case-Study-on-Netflix-s-Recommendation" target="_blank" rel="noopener">
+            <span class="id">R-008</span><span class="name">CRISP-DM case study <em>— Netflix recommendations</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/Assignment-2-ADS" target="_blank" rel="noopener">
+            <span class="id">R-009</span><span class="name">Smartphone market analysis <em>— cleaning and EDA</em></span><span class="kind">Data</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/PriyanshVerma-gen-ai-foundations." target="_blank" rel="noopener">
+            <span class="id">R-010</span><span class="name">Generative AI foundations <em>— vector labs and mini apps</em></span><span class="kind">GenAI</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row" href="https://github.com/priyanshverma2004/MLTP" target="_blank" rel="noopener">
+            <span class="id">R-011</span><span class="name">ML practical notebook <em>— coursework</em></span><span class="kind">ML</span><span class="yr">2026</span></a></li>
+          <li><a class="archive-row archive-row--note" href="https://github.com/priyanshverma2004/Discord_Bot" target="_blank" rel="noopener">
+            <span class="id">R-012</span><span class="name">Discord bot <em>— idea and skeleton, no working code yet</em><span class="noteflag">unfinished</span></span><span class="kind">WIP</span><span class="yr">2026</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOOLKIT ================= -->
+  <section class="section" id="toolkit" aria-labelledby="toolkit-title">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="kicker">03 — Toolkit</p>
+        <div>
+          <h2 id="toolkit-title">What I reach for, and where I've used it.</h2>
+          <p>No proficiency bars. If a tool is listed here, there is a notebook, a repository or a shipped page behind it.</p>
+        </div>
+      </div>
+      <dl class="toolkit">
+        <div class="tool"><dt>Languages</dt><dd><b>Python</b> (primary) · C · C++ · JavaScript · SQL</dd></div>
+        <div class="tool"><dt>Machine learning</dt><dd>scikit-learn · pandas · NumPy — classification, pipelines, class imbalance, evaluation</dd></div>
+        <div class="tool"><dt>Deep learning</dt><dd>TensorFlow / Keras — CNNs, LSTMs, convolutional autoencoders</dd></div>
+        <div class="tool"><dt>NLP</dt><dd>Preprocessing · tokenisation · bag-of-words / TF-IDF · text classification</dd></div>
+        <div class="tool"><dt>Generative AI</dt><dd>Gemini API · prompt design · structured JSON output · Flask integration</dd></div>
+        <div class="tool"><dt>Web</dt><dd>Flask · Jinja · Streamlit · HTML / CSS / JavaScript; React, Next.js, Node, Express, MongoDB (coursework)</dd></div>
+        <div class="tool"><dt>Tooling</dt><dd>Git · GitHub · Jupyter · VS Code · IntelliJ IDEA</dd></div>
+        <div class="tool"><dt>Learning now</dt><dd>Retrieval-augmented generation · evaluation · LLM fine-tuning</dd></div>
+      </dl>
+      <div class="learning">
+        <span>A working note</span>
+        <p>My GitHub fun fact is that six of my ten NLP notebooks exist because a single regex silently ruined a result. I kept the notebooks. Debugging is part of the record.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOG ================= -->
+  <section class="section" id="log" aria-labelledby="log-title">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="kicker">04 — Log</p>
+        <div>
+          <h2 id="log-title">The short version of how I got here.</h2>
+        </div>
+      </div>
+      <ol class="log">
+        <li class="log__item">
+          <span class="log__when">2026 — now</span>
+          <div class="log__what">
+            <span class="where">Selected work</span>
+            <h3>Building small, complete ML systems</h3>
+            <p>An interview coach on Gemini, a spam classifier measured against a baseline, a churn model with a Streamlit front end, and a set of NLP and deep-learning notebooks.</p>
+          </div>
+        </li>
+        <li class="log__item">
+          <span class="log__when">2025 — present</span>
+          <div class="log__what">
+            <span class="where">Postgraduate</span>
+            <h3>MCA, Generative AI — Alliance University</h3>
+            <p>Bengaluru. Coursework across machine learning, deep learning, NLP and generative AI, alongside independent project work.</p>
+          </div>
+        </li>
+        <li class="log__item">
+          <span class="log__when">2022 — 2025</span>
+          <div class="log__what">
+            <span class="where">Undergraduate</span>
+            <h3>BCA — Kalinga University</h3>
+            <p>Raipur. Graduated with 74.28%. Foundations in programming, data structures, databases and web development.</p>
+          </div>
+        </li>
+        <li class="log__item">
+          <span class="log__when">2026</span>
+          <div class="log__what">
+            <span class="where">Coursework</span>
+            <h3>Certificates I actually finished</h3>
+            <p>Python (SoloLearn) · DBMS (Coursera) · Advanced Data Structures &amp; Algorithms (Coursera) · Machine Learning (Coursera) · SQL · MongoDB basics.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact__grid">
+      <div>
+        <p class="kicker mono" style="color:var(--stamp);margin-bottom:1rem">05 — Contact</p>
+        <h2 id="contact-title">Hiring for something that has to <em>work?</em></h2>
+        <div class="contact__body">
+          <p>I'm looking for internships and entry-level roles in machine learning, AI engineering or software engineering — anywhere the job involves building the thing, not only describing it.</p>
+        </div>
+        <div class="contact__links">
+          <a class="btn btn--mail" href="mailto:priyanshverma2004@gmail.com">priyanshverma2004@gmail.com</a>
+          <button class="btn btn--ghost" type="button" data-copy="priyanshverma2004@gmail.com">Copy address</button>
+        </div>
+        <p class="copied" data-copy-status aria-live="polite" style="margin-top:.6rem"></p>
+      </div>
+      <div class="contact__card">
+        <h3>At a glance</h3>
+        <dl>
+          <dt>Based</dt><dd>Bengaluru, Karnataka, India</dd>
+          <dt>Status</dt><dd>Open to internships and entry-level roles</dd>
+          <dt>Best fit</dt><dd>ML / AI engineering · NLP · GenAI · Python backend</dd>
+          <dt>Résumé</dt><dd><a href="/resume/">One page, printable, no tracking</a></dd>
+          <dt>Elsewhere</dt><dd><a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <p><b style="font-weight:500;color:var(--ink)">The Index</b> — a card catalogue of machine-learning work by Priyansh Verma. Built as static HTML with hand-written CSS and one small JavaScript file.</p>
+      <div class="footer__meta">
+        <a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:priyanshverma2004@gmail.com">Email</a>
+        <a href="/resume/">Résumé</a>
+        <button type="button" data-plain-toggle aria-pressed="false">Plain view</button>
+        <a href="#main">Back to top ↑</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Set in Instrument Serif, Newsreader &amp; IBM Plex Mono. No cookies, no trackers, no analytics.</span>
+      <span>Last updated 14 November 2026 · © 2026 Priyansh Verma</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/archive.js" defer></script>
+</body>
+</html>

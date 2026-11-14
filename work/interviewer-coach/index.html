@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" data-theme="paper" data-plain="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Interview Coach — a full record | Priyansh Verma</title>
+<meta name="description" content="Case study: a Flask app that generates role-specific mock interview questions with Gemini 2.5 Flash, evaluates every answer and saves a report. Architecture, trade-offs and limitations.">
+<link rel="canonical" href="https://priyanshverma2004.github.io/work/interviewer-coach/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#f2ecdf">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Index — Priyansh Verma">
+<meta property="og:title" content="AI Interview Coach — a full record">
+<meta property="og:description" content="Flask + Gemini 2.5 Flash: role-specific questions, per-answer evaluation, and a report you can revisit. What I built, what I traded away, what I'd fix.">
+<meta property="og:url" content="https://priyanshverma2004.github.io/work/interviewer-coach/">
+<meta property="og:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Interview Coach — a full record">
+<meta name="twitter:description" content="Flask + Gemini 2.5 Flash: role-specific questions, per-answer evaluation, and a report you can revisit.">
+<meta name="twitter:image" content="https://priyanshverma2004.github.io/assets/img/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/archive.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "AI Interview Coach",
+  "author": {"@type": "Person", "name": "Priyansh Verma", "url": "https://priyanshverma2004.github.io/"},
+  "dateCreated": "2026",
+  "programmingLanguage": ["Python", "JavaScript", "HTML"],
+  "about": ["Generative AI", "Interview preparation", "Flask", "Gemini API"],
+  "url": "https://priyanshverma2004.github.io/work/interviewer-coach/",
+  "codeRepository": "https://github.com/priyanshverma2004/interviewer-coach"
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="/" aria-label="Priyansh Verma — home"><b>P.VERMA</b><span>/</span><small>INDEX</small></a>
+    <nav id="site-nav" aria-label="Primary">
+      <a href="/#work">Work</a>
+      <a href="/#about">Profile</a>
+      <a href="/#toolkit">Toolkit</a>
+      <a href="/#log">Log</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <button class="mode mono" type="button" data-plain-toggle aria-pressed="false" title="Plain, recruiter-friendly view"><span class="mode__label">Plain view</span></button>
+      <button class="iconbtn" type="button" data-theme-toggle aria-pressed="false" aria-label="Turn the lights off" title="Lights off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+      </button>
+      <a class="btn btn--sm" href="/resume/">Résumé</a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <header class="subhero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Index</a><span>/</span><a href="/#work">Work</a><span>/</span><span aria-current="page">R-001</span>
+      </nav>
+      <h1>AI Interview Coach</h1>
+      <p class="dek">A Flask app that turns a job description and a résumé into a realistic mock interview — then writes the feedback report a candidate would otherwise have to imagine.</p>
+      <div class="subhero__meta">
+        <span><b>R-001</b></span>
+        <span>2026</span>
+        <span>Solo build</span>
+        <span>Python · Flask · Gemini 2.5 Flash</span>
+        <span><a href="https://github.com/priyanshverma2004/interviewer-coach" target="_blank" rel="noopener">Repository ↗</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap cs">
+    <aside class="cs__side" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ul>
+        <li><a href="#problem">1. The problem</a></li>
+        <li><a href="#flow">2. What it does</a></li>
+        <li><a href="#build">3. How it is built</a></li>
+        <li><a href="#decisions">4. Decisions</a></li>
+        <li><a href="#evidence">5. Evidence</a></li>
+        <li><a href="#next">6. What I'd fix</a></li>
+      </ul>
+    </aside>
+
+    <div class="cs__main">
+      <section id="problem">
+        <h2>1. The problem</h2>
+        <p>Interview practice is easy to start and hard to judge. A friend can ask questions, but they cannot consistently score the answer, remember what you missed last time, or tell you the difference between “vague” and “wrong”. Generic question lists do not adapt to the role you are actually applying for.</p>
+        <p>This project asks a narrower question: can a single Flask app produce a complete practice loop — tailored questions, an evaluation per answer, and a report worth re-reading — without a database, a frontend framework, or a team?</p>
+        <div class="callout"><b>The constraint that shaped everything:</b> it had to be reviewable by someone who does not have a Gemini API key. That one requirement produced the mock mode, the seed data, and most of the architecture below.</div>
+      </section>
+
+      <section id="flow">
+        <h2>2. What it does</h2>
+        <p>The candidate chooses a role, pastes a job description and résumé (both optional), picks a difficulty and a question count. The app generates a fresh set of questions, walks through them one at a time, evaluates each answer, and finishes with a scored report.</p>
+        <div class="flow" aria-label="Interview flow">
+          <div class="flow__node"><b>01 · SETUP</b>Role, JD, résumé, difficulty, count</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>02 · GENERATE</b>Gemini returns a JSON array of questions</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>03 · ANSWER</b>One question per page, answers saved</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>04 · EVALUATE</b>Score, strengths, gaps, model answer</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>05 · REPORT</b>Overall score, three categories, next steps</div>
+        </div>
+        <p>Each answer receives a 0–10 score, a correctness analysis, strengths, weaknesses, explicit errors, suggestions, and a model answer. The final pass compresses the whole transcript into an overall score out of 100, three category scores, top skills and recommendations.</p>
+      </section>
+
+      <section id="build">
+        <h2>3. How it is built</h2>
+        <p>There is no build step and no client-side framework. Flask renders six Jinja templates; a small amount of JavaScript draws the dashboard charts. The interesting separation is on the server: routes do HTTP, the engine owns session state, the service owns prompts, and the report layer owns aggregation.</p>
+        <div class="flow">
+          <div class="flow__node"><b>app.py</b>8 routes · session cookie</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>interview_engine</b>State, ordering, completion</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node is-key"><b>gemini_service</b>Prompts + JSON mode + fallbacks</div>
+          <div class="flow__arrow" aria-hidden="true">→</div>
+          <div class="flow__node"><b>report_generator</b>Averages, trends, skills</div>
+        </div>
+        <p>Questions are requested with <code>response_mime_type: application/json</code>, so the model returns a JSON array instead of a prose list wrapped in markdown. The response is parsed and validated as a non-empty list; if anything fails — a timeout, a malformed object, an exhausted quota — the service logs the error and falls back to a canned question bank rather than breaking the interview.</p>
+        <p>Active sessions are stored as <code>active_&lt;uuid&gt;.json</code>; completed reports as <code>report_&lt;uuid&gt;.json</code>. Only the session ID lives in the Flask cookie. The dashboard lists the report folder, aggregates averages with Python, and exposes the same numbers at <code>/api/dashboard-data</code> for Chart.js.</p>
+        <figure class="fig">
+          <svg viewBox="0 0 720 190" role="img" aria-label="Request flow: browser to Flask routes, engine, Gemini service, JSON files, dashboard">
+            <rect x="14" y="58" width="118" height="62" fill="none" stroke="currentColor"/>
+            <text x="30" y="82" font-size="10" font-family="monospace">BROWSER</text>
+            <text x="30" y="98" font-size="8" font-family="monospace" opacity=".7">JINJA · CHART.JS</text>
+            <path d="M136 89h34" stroke="currentColor"/><path d="M166 85l6 4-6 4" fill="none" stroke="currentColor"/>
+            <rect x="176" y="58" width="110" height="62" fill="none" stroke="currentColor"/>
+            <text x="192" y="82" font-size="10" font-family="monospace">FLASK</text>
+            <text x="192" y="98" font-size="8" font-family="monospace" opacity=".7">8 ROUTES</text>
+            <path d="M290 89h34" stroke="currentColor"/><path d="M320 85l6 4-6 4" fill="none" stroke="currentColor"/>
+            <rect x="330" y="50" width="132" height="78" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <text x="346" y="76" font-size="10" font-family="monospace">ENGINE</text>
+            <text x="346" y="92" font-size="8" font-family="monospace" opacity=".7">ORDER · STATE</text>
+            <text x="346" y="106" font-size="8" font-family="monospace" opacity=".7">COMPLETION</text>
+            <path d="M466 89h30" stroke="currentColor"/><path d="M492 85l6 4-6 4" fill="none" stroke="currentColor"/>
+            <rect x="502" y="50" width="132" height="78" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <text x="518" y="76" font-size="10" font-family="monospace">GEMINI</text>
+            <text x="518" y="92" font-size="8" font-family="monospace" opacity=".7">2.5 FLASH</text>
+            <text x="518" y="106" font-size="8" font-family="monospace" opacity=".7">JSON MODE</text>
+            <rect x="330" y="146" width="132" height="30" fill="none" stroke="currentColor"/>
+            <text x="346" y="165" font-size="8" font-family="monospace">JSON REPORTS</text>
+            <path d="M396 128v18" stroke="currentColor"/><path d="M392 142l4 6 4-6" fill="none" stroke="currentColor"/>
+            <text x="14" y="26" font-size="9" font-family="monospace">EVERY FAILURE PATH ENDS IN A WORKING INTERVIEW, NOT A 500</text>
+          </svg>
+          <figcaption>Request path. The Gemini call is isolated in one service so it can be swapped or mocked.</figcaption>
+        </figure>
+      </section>
+
+      <section id="decisions">
+        <h2>4. Decisions and trade-offs</h2>
+        <h3>Files instead of a database</h3>
+        <p>A JSON file per report means zero setup, an obvious audit trail, and a demo that runs with <code>python app.py</code>. The cost is real: no concurrent writes, no user scoping, no query layer, and a dashboard that reads every file on every request. For one user this is a feature; for ten it is a bug.</p>
+        <h3>A strict question order</h3>
+        <p>The route checks the requested index against the server's current index and redirects if they disagree. This prevents skipping ahead or resubmitting an answer, and keeps the state machine understandable. It also means a candidate cannot go back and revise an earlier answer — a deliberate trade-off I would revisit before calling this a product.</p>
+        <h3>Mock mode as a first-class path</h3>
+        <p>When no key is configured, the service serves a curated question bank and deterministic evaluations. This was not an afterthought: it is why the interface can be reviewed in a browser without secrets, and it doubles as a fallback when the API is unavailable.</p>
+        <h3>Structured output, with a fallback</h3>
+        <p>Every prompt asks for raw JSON, and the call sets the response MIME type. Even so, parsing is wrapped: a malformed response logs and falls back. Trusting a model to be valid JSON is not a strategy; validating it is.</p>
+      </section>
+
+      <section id="evidence">
+        <h2>5. What is verifiable</h2>
+        <dl class="kv">
+          <div><dt>Routes</dt><dd>8<small>setup, interview, feedback, report, dashboard, data API, reset, home</small></dd></div>
+          <div><dt>Templates</dt><dd>6<small>Jinja pages, no client framework</small></dd></div>
+          <div><dt>Service modules</dt><dd>4<small>engine, Gemini, report, utilities</small></dd></div>
+          <div><dt>Question model</dt><dd>2.5 Flash<small>JSON response mode, validated before use</small></dd></div>
+        </dl>
+        <p>The repository includes the Flask app, the six templates, the static assets, and sample report JSON. There is no public deployment: the app needs a Gemini key, and I would rather link a repository that runs than a demo that does not. The README documents the two commands needed to start it.</p>
+        <div class="callout"><b>What this does not prove:</b> that the questions are good. There is no evaluation set of interview questions, no inter-rater comparison, and no evidence that a higher score predicts a better interview. Those are open questions, not claims.</div>
+      </section>
+
+      <section id="next">
+        <h2>6. What I would fix next</h2>
+        <ul>
+          <li><strong>Authentication and real storage.</strong> Move sessions and reports to SQLite or Postgres, scope them to a user, and delete the flat-file layer.</li>
+          <li><strong>Production hygiene.</strong> Turn off <code>debug=True</code>, remove the default secret-key fallback, and move rate limiting in front of the Gemini calls.</li>
+          <li><strong>Cost and latency visibility.</strong> Log tokens and response time per request; a mock-interview app that quietly burns quota is a bad demo.</li>
+          <li><strong>Let candidates revisit an answer.</strong> Keep the order, but allow a review step before final submission.</li>
+          <li><strong>Export.</strong> A printable PDF report is the obvious next feature; the data is already structured for it.</li>
+          <li><strong>Voice.</strong> The original motivation. Speech-to-text would make practice feel like an interview rather than a form.</li>
+        </ul>
+        <p class="links" style="margin-top:1.6rem">
+          <a href="https://github.com/priyanshverma2004/interviewer-coach" target="_blank" rel="noopener">Repository <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+          <a href="/work/email-spam/">Next record: Email Spam Classifier →</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <p><b style="font-weight:500;color:var(--ink)">The Index</b> — R-001 of 013. Written and built by Priyansh Verma.</p>
+      <div class="footer__meta">
+        <a href="https://github.com/priyanshverma2004" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/priyansh-verma-7173572aa/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:priyanshverma2004@gmail.com">Email</a>
+        <a href="/resume/">Résumé</a>
+        <a href="/#work">All records</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>Set in Instrument Serif, Newsreader &amp; IBM Plex Mono. No cookies, no trackers, no analytics.</span>
+      <span>Last updated 14 November 2026 · © 2026 Priyansh Verma</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/archive.js" defer></script>
+</body>
+</html>
