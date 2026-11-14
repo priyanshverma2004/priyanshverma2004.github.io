@@ -533,6 +533,25 @@ html:not(.js) .index-tools{display:none}
 .learning span{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stamp)}
 .learning p{font-size:.92rem;color:var(--ink-2);flex:1 1 320px}
 
+/* ---------- Certificates ---------- */
+.certs{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.cert{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;
+  gap:.6rem 1.2rem;align-items:baseline;
+  padding:.9rem .2rem;border-bottom:1px solid var(--rule);
+}
+.cert__name{font-size:1.02rem;color:var(--ink);line-height:1.35}
+.cert__issuer{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);line-height:1.5}
+.cert__link{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border-bottom:1px solid var(--rule-strong);padding-bottom:.15rem;
+  display:inline-flex;align-items:center;gap:.35rem;white-space:nowrap;justify-self:end;min-height:32px;
+}
+.cert__link svg{width:12px;height:12px}
+.cert__link:hover{border-color:var(--stamp);color:var(--stamp)}
+.cert__link--muted{border-bottom:0;color:var(--ink-3);cursor:default}
+.cert__link--muted:hover{color:var(--ink-3)}
+
 /* ---------- Log ---------- */
 .log{position:relative;padding-left:0;list-style:none;margin:0}
 .log__item{
@@ -765,6 +784,8 @@ html[data-plain="true"] .plain-banner{display:block}
   .archive-row .kind{display:none}
   .tool{grid-template-columns:1fr;gap:.2rem}
   .toolkit{grid-template-columns:1fr}
+  .cert{grid-template-columns:1fr;gap:.2rem}
+  .cert__link{justify-self:start}
   .log__item{grid-template-columns:1fr;gap:.35rem}
   .entry,.skills{grid-template-columns:1fr;gap:.2rem}
   .entry__when{padding-top:0}
